@@ -105,6 +105,7 @@
 				<?php if ( count($data['programadas']) ) { ?>
 				<?php foreach ( $data['programadas'] as $row ) { ?>
 				<tr style="color: green;">
+					<td><strong><input type="checkbox" name="sot[]" value="<?=$row->id?>"></strong></td>
 					<td><strong><?=$row->id?></strong></td>
 					<td><strong><?=$row->tsnombre?></strong></td>
 					<td><strong><?=$row->cliente?></strong></td>
@@ -118,11 +119,7 @@
 				<?php if ( count($data['pendientes']) ) { ?>
 				<?php foreach ( $data['pendientes'] as $row ) { ?>
 				<tr>
-
-				<td><strong>
-	<input type="checkbox" name="sot[]" value="<?=$row->id?>">
-					</strong></td>
-					
+					<td><strong><input type="checkbox" name="sot[]" value="<?=$row->id?>"></strong></td>
 					<td><strong><?=$row->id?></strong></td>
 					<td><strong><?=$row->tsnombre?></strong></td>
 					<td><strong><?=$row->cliente?></strong></td>
