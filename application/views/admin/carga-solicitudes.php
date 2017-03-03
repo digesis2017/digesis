@@ -29,17 +29,9 @@
 
 			<h1>Solicitudes Cargadas <?=date('d-m-Y')?></h1>
 			<?php
-				$this->db->query("INSERT INTO `tecnicos` (`id`, `nombres`, `apellidos`, `dni`, `email`, `cargo`, `rpc`, `fechaingreso`, `renta`, `baseid`, `supervisorid`, `publish`, `fecha_cese`, `motivo_cese`) VALUES
-(32, 'RONALD RODRIGO', 'ROMERO SEGURA', 45863516, 'romero@gmail.com', 1, 986135440, 1487977200, 4, 7, 22, 1, 0, NULL),
-(33, 'TOÑO SAUL', 'JUAREZ DIAZ', 45200023, 'saul@gmail.com', 1, 997351398, 1487977200, 4, 7, 22, 1, 0, NULL),
-(34, 'DANIEL OSWALD', 'MONDOÑEDO ZAVALA', 72209464, 'daniel@gmail.com', 2, 976369675, 1487977200, 4, 7, 22, 1, 0, NULL),
-(35, 'LUIS ALEXANDER', 'UCHUYA ZEVALLOS', 47753267, 'luis@gmail.com', 2, 948083613, 1487977200, 4, 7, 22, 1, 0, NULL);");
-
-				$this->db->query("INSERT INTO `supervisores` (`id`, `nombres`, `apellidos`, `user`, `password`, `dni`, `email`, `jefeid`, `baseid`, `publish`, `fecha_cese`, `motivo_cese`) VALUES
-(22, 'JUAN FERNANDO', 'RODRIGUEZ VALVERDE', 'juanv', 'juanv', 40203683, 'juan.valverde@digetelperu.com', 7, 7, 1, 0, '');");
-
+/*
 				$this->db->query("INSERT INTO `jefes` (`id`, `user`, `password`, `nombres`, `apellidos`, `dni`, `email`, `regionid`, `publish`, `fecha_cese`, `motivo_cese`) VALUES
-(7, 'jguevara', 'jguevara', 'JOHONNY RICHARD', 'GUEVARA SALAZAR', 12345671, 'johonny.guevara@digetelperu.co', 4, 1, 0, NULL);");
+(7, 'jguevara', 'jguevara', 'JOHONNY RICHARD', 'GUEVARA SALAZAR', 12345671, 'johonny.guevara@digetelperu.co', 4, 1, 0, NULL);");¨*/
 			?>
 			<br>
 			<table class="table table-bordered table-striped">
