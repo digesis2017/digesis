@@ -103,79 +103,55 @@ class Solicitudes extends CI_Controller {
 	public function form_multiple() {
 		securityAccess(array(1, 4));		
 		$session = get_session();
-		$data['header'] = $this->load->view('admin/menu/header', array('active' => 'solicitudesadd' ));
-
+		$data['header'] = $this->load->view('admin/menu/header', array('active' => 'asignartecnicos' ));
 		$data['supervisores'] = $this->msupervisores->supervisores_combo();
-
 		$data['analistas'] = $this->musuarios->usuarios_entrys(false, false, 4);
 		$sot=$this->input->get();
-
-		//$url = parse_url($_SERVER['REQUEST_URI']);
-		//parse_str($url['query'], $params);
-		
-		//print_r($params);
-
 		$sots=array();
-					
-		for ($i=0;$i<=count($sot);$i++)
-		{		 
-           if (isset($sot['sot'.$i]))
+		for ( $i=0; $i<=count($sot); $i++) {
+			if (isset($sot['sot'.$i]))
 				$sots[]=$sot['sot'.$i];
 		}
 					
 		$data['admin'] = ($session->rolid==1) ? TRUE : FALSE;
-		if (!empty($sots)) {
+		if ( !empty($sots) ) {
 			securityAccess(array(1,4));
 
-	$sol_mult=$this->msolicitudes->solicitudes_asignar_multiple($sots);
+			$sol_mult = $this->msolicitudes->solicitudes_asignar_multiple($sots);
+			$r_sol_tec = [];
+			foreach ( $sol_mult as $key => $value ) {
+				$r_sol_tec[$value->id]['id']=$value->id;		
+				$r_sol_tec[$value->id]['tecnico1']=(($value->tecnico1!="")?$value->tecnico1:"sin asignar");
+				$r_sol_tec[$value->id]['tecnico2']=(($value->tecnico2!="")?$value->tecnico2:"sin asignar");
+				$categoria=null;
+				if ($value->tiposervicioid==self::SERVICIO_INSTALACIONES)
+					$categoria="instalacion";
 
+				if ($value->tiposervicioid==self::SERVICIO_MANTENIMIENTO)
+					$categoria='mantenimiento';
 
-		$r_sol_tec=[];
-		foreach ($sol_mult as $key => $value) {
-
-			$r_sol_tec[$value->id]['id']=$value->id;		
-			$r_sol_tec[$value->id]['tecnico1']=(($value->tecnico1!="")?$value->tecnico1:"sin asignar");
-			$r_sol_tec[$value->id]['tecnico2']=(($value->tecnico2!="")?$value->tecnico2:"sin asignar");
-
-		$categoria=null;
-	if ($value->tiposervicioid==self::SERVICIO_INSTALACIONES)
-		$categoria="instalacion";
-
-	if ($value->tiposervicioid==self::SERVICIO_MANTENIMIENTO)
-		$categoria='mantenimiento';
-
-	if ($value->tiposervicioid==self::SERVICIO_POST_VENTA)
-		$categoria='post instalacion';
-	
-	$r_sol_tec[$value->id]['tipotrabajos']=$this->mservicios->getByCategoria($categoria);
-
-	$r_sol_tec[$value->id]['fecha']=($value->fecha_instalacion==0)? 'Sin asignar': date('Y-m-d',$value->fecha_instalacion);
-			$r_sol_tec[$value->id]['hora']=(($value->hora!="")? $value->hora:"12:00");
-		}
-				
-				/*
-				if ( @$data['data']->supid ) {
-					$data['tecnicos1'] = $this->mtecnicos->tecnicos_bySupervisor($data['data']->supid, 1);
-					$data['tecnicos2'] = $this->mtecnicos->tecnicos_bySupervisor($data['data']->supid, 2);
-				}
-				*/
+				if ($value->tiposervicioid==self::SERVICIO_POST_VENTA)
+					$categoria='post instalacion';
+		
+				$r_sol_tec[$value->id]['tipotrabajos']=$this->mservicios->getByCategoria($categoria);
+				$r_sol_tec[$value->id]['fecha']=($value->fecha_instalacion==0)? 'Sin asignar': date('Y-m-d',$value->fecha_instalacion);
+				$r_sol_tec[$value->id]['hora']=(($value->hora!="")? $value->hora:"12:00");
+			}
 
 			$data['r_sol_tec']=$r_sol_tec;				
-			}
-			else
-				redirect('solicitudes');
+		}
+		else
+			redirect('solicitudes');
 		
 		$this->load->view('admin/solicitudes_asignar', $data);
 	}
 
 
-	public function asignar()
-	{
-	 $session = get_session();
-     $request=$this->input->post();    
-     
-	 $data=json_decode($request['data']);	 
-     foreach ($data as $key => $value) {
+	public function asignar() {
+		$session = get_session();
+		$request=$this->input->post();    
+		$data=json_decode($request['data']);	 
+		foreach ( $data as $key => $value ) {
           	
 		$formdata = array(
 			'sid' => $value->id,
