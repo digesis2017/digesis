@@ -287,7 +287,7 @@ class Msolicitudes extends CI_Model
 		$this->db->join('tiposervicios ts', 'ts.id = s.tiposervicioid', 'left');
 		$this->db->join('solicitudestecnicos st', 'st.sid = s.id', 'left');
 		$this->db->join('estadosrf rf', 'rf.id = s.rf', 'left');
-		$this->db->where_in('s.estadoid', array(2, 3));
+		$this->db->where('s.estadoid', 2);
 		$this->db->where_in('s.rf', array(1, 2));
 		if ( is_numeric($tid) && ( $tid != 0 ) ) {
 			$where = "(st.t1id = $tid OR st.t2id = $tid)";
