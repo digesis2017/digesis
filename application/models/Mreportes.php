@@ -264,6 +264,7 @@ class Mreportes extends CI_Model
 			$this->db->select('s.sid, s.estadoid, s.fecha_instalacion');
 			$this->db->from('solicitudes s');
 			$this->db->where('s.estadoid', 4);
+			$query = $this->db->get();
 			echo '<pre>';
 			print_r($query->result());
 			foreach ( $query->result() as $key => $value ) {
