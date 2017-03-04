@@ -261,7 +261,7 @@ class Mreportes extends CI_Model
 				$rows['porcentaje'] = number_format(($rows['totalvalidados'] / $rows['totalsolicitudes'] * 100), 0);
 		}
 		if ( @$_GET['test'] == TRUE ) {
-			$this->db->select('s.sid, s.estadoid, s.fecha_instalacion');
+			$this->db->select('s.id, s.estadoid, s.fecha_instalacion');
 			$this->db->from('solicitudes s');
 			$this->db->where('s.estadoid', 4);
 			$query = $this->db->get();
