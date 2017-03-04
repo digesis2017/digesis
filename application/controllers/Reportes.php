@@ -22,7 +22,7 @@ class Reportes extends CI_Controller {
 
 		$data['desde'] = isset($_POST['desde']) ? $_POST['desde'] : date('Y-m-01');
 		$data['hasta'] = isset($_POST['hasta']) ? $_POST['hasta'] : date('Y-m-d');
-		if ( $_GET['test'] == TRUE ) {
+		if ( @$_GET['test'] == TRUE ) {
 			echo '<pre>' . 'Desde: ' . $data['desde'] . '</pre>';
 			echo '<pre>' . 'Hasta: ' . $data['hasta'] . '</pre>';
 		}
