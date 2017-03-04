@@ -265,6 +265,7 @@ class Mreportes extends CI_Model
 			$this->db->from('solicitudes s');
 			$this->db->where('s.estadoid', 4);
 			echo '<pre>';
+			print_r($query->result());
 			foreach ( $query->result() as $key => $value ) {
 				echo 'Fecha: ' . date('d-m-Y', $value->fecha_instalacion) . ' - Fecha Timestamp: ' . $value->fecha_instalacion;
 			}
