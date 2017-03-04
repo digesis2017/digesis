@@ -416,6 +416,7 @@ class Solicitudes extends CI_Controller {
 				'regionid' => $this->input->post('regionid'),
 				'distritoid' => $this->input->post('distritoid'),
 				'usuarioid' => $session->id,
+				'upload' => 0,
 				'fecha_instalacion' => $this->input->post('fecha_instalacion') ? strtotime($fecha) : strtotime('now'),
 				'horario' => $this->input->post('horarioid'),
 				'modtime' => strtotime("now")
