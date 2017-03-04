@@ -260,6 +260,16 @@ class Mreportes extends CI_Model
 			if ( $rows['totalsolicitudes'] )
 				$rows['porcentaje'] = number_format(($rows['totalvalidados'] / $rows['totalsolicitudes'] * 100), 0);
 		}
+		if ( @$_GET['test'] == TRUE ) {
+			$this->db->select('s.sid, s.estadoid, s.fecha_instalacion');
+			$this->db->from('solicitudes s');
+			$this->db->where('s.estadoid', 4);
+			echo '<pre>';
+			foreach ( $query->result() as $key => $value ) {
+				echo 'Fecha: ' . date('d-m-Y', $value->fecha_instalacion) . ' - Fecha Timestamp: ' . $value->fecha_instalacion;
+			}
+			echo '</pre>';
+		}
 		return $rows;
 	}
 
