@@ -25,6 +25,7 @@ class Reportes extends CI_Controller {
 		if ( @$_GET['test'] == TRUE ) {
 			echo '<pre>' . 'Desde: ' . $data['desde'] . '</pre>';
 			echo '<pre>' . 'Hasta: ' . $data['hasta'] . '</pre>';
+			echo date_default_timezone_get();
 		}
 		$data['jefeid'] = isset($_POST['jefeid']) ? $_POST['jefeid'] : null;
 		$data['supervisorid'] = isset($_POST['supervisorid']) ? $_POST['supervisorid'] : null;
