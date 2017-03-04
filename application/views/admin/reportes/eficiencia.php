@@ -9,7 +9,7 @@
 			<br><br><br><hr>
 			<fieldset class="search">
 				<legend></legend>
-				<form id="form" method="post" action="<?=base_url()?>index.php/reportes/eficiencia">
+				<form id="form" method="post" action="<?=base_url()?>index.php/reportes/eficiencia<?=isset($_GET['test'])?'?test=true':''?>">
 					<h3>Seleccionar rango de fechas:</h3><br>
 					Desde : <input type="date" name="desde" id="desde" value="<?=$desde?>">
 					Hasta : <input type="date" name="hasta" id="hasta" value="<?=$hasta?>">
