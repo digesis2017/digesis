@@ -227,7 +227,7 @@ class Mreportes extends CI_Model
 			$this->db->group_by("s.estadoid");
 			$query = $this->db->get();
 			if ( @$_GET['test'] == TRUE ) {
-				echo '<pre>' . print_r($query->result()) . '</pre>';
+				//echo '<pre>' . print_r($query->result()) . '</pre>';
 			}
 			if ( $query->num_rows() > 0 ) {
 				$rows['bases'][$sup->baseid][$sup->id]['sinestado'] = $rows['bases'][$sup->baseid][$sup->id]['validados'] = $rows['bases'][$sup->baseid][$sup->id]['pendientes'] = $rows['bases'][$sup->baseid][$sup->id]['reprogramados'] = $rows['bases'][$sup->baseid][$sup->id]['rechazados'] = $rows['bases'][$sup->baseid][$sup->id]['porcentaje'] = 0;
