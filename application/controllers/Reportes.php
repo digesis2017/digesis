@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('America/Lima');
 
 class Reportes extends CI_Controller {
 
