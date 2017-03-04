@@ -212,7 +212,7 @@ class Mreportes extends CI_Model
 				$rows['bases'][$sup->baseid][$sup->id]['nombre'] = $sup->nombres . ' ' . $sup->apellidos;
 			}
 
-			$this->db->select('COUNT(st.sid) AS cantidad, s.estadoid');
+			$this->db->select('COUNT(st.sid) AS cantidad, s.estadoid, s.fecha_instalacion');
 			$this->db->from('solicitudestecnicos st');
 			$this->db->join('solicitudes s', 'st.sid = s.id', 'left');
 			$this->db->where('st.supid', $sup->id);
@@ -226,7 +226,9 @@ class Mreportes extends CI_Model
 			}
 			$this->db->group_by("s.estadoid");
 			$query = $this->db->get();
-			print_r($query->result());
+			if ( @$_GET['test'] == TRUE ) {
+				print_r($query->result());
+			}
 			if ( $query->num_rows() > 0 ) {
 				$rows['bases'][$sup->baseid][$sup->id]['sinestado'] = $rows['bases'][$sup->baseid][$sup->id]['validados'] = $rows['bases'][$sup->baseid][$sup->id]['pendientes'] = $rows['bases'][$sup->baseid][$sup->id]['reprogramados'] = $rows['bases'][$sup->baseid][$sup->id]['rechazados'] = $rows['bases'][$sup->baseid][$sup->id]['porcentaje'] = 0;
 				foreach ( $query->result() as $key => $row ) {
