@@ -219,8 +219,10 @@ class Mreportes extends CI_Model
 			if ( $params['desde'] && $params['hasta'] ) {
 				$this->db->where('s.fecha_instalacion >=', strtotime($params['desde']));
 				$this->db->where('s.fecha_instalacion <=', strtotime($params['hasta']));
-				echo '<pre>' . 'Desde Timestamp: ' . strtotime($params['desde']) . '</pre>';
-				echo '<pre>' . 'Hasta Timestamp: ' . strtotime($params['hasta']) . '</pre>';
+				if ( $_GET['true'] == TRUE ) {
+					echo '<pre>' . 'Desde Timestamp: ' . strtotime($params['desde']) . '</pre>';
+					echo '<pre>' . 'Hasta Timestamp: ' . strtotime($params['hasta']) . '</pre>';
+				}
 			}
 			$this->db->group_by("s.estadoid");
 			$query = $this->db->get();
