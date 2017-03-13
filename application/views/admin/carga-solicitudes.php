@@ -29,10 +29,9 @@
 
 			<h1>Solicitudes Cargadas <?=date('d-m-Y')?></h1>
 			<?php
-
-				$this->db->query("DELETE FROM solicitudestecnicos");
-				$this->db->query("DELETE FROM solicitudes");
-				$this->db->query("DELETE FROM solicitudeslog");
+/*
+				$this->db->query("INSERT INTO `jefes` (`id`, `user`, `password`, `nombres`, `apellidos`, `dni`, `email`, `regionid`, `publish`, `fecha_cese`, `motivo_cese`) VALUES
+(7, 'jguevara', 'jguevara', 'JOHONNY RICHARD', 'GUEVARA SALAZAR', 12345671, 'johonny.guevara@digetelperu.co', 4, 1, 0, NULL);");¨*/
 			?>
 			<br>
 			<table class="table table-bordered table-striped">
