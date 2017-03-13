@@ -576,7 +576,7 @@ class Solicitudes extends CI_Controller {
 				));
 			}
 			else
-				$data['error'] = '<p style="color: red;"><b>Error de Archivo, Elija un Archivo .csv2</b></p>';
+				$data['error'] = '<p style="color: red;"><b>Error de Archivo, Elija un Archivo .csv</b></p>';
 		}
 		else
 			$data['bnombres'] = isset($_POST['bnombres']) ? $_POST['bnombres'] : '';

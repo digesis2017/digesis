@@ -123,22 +123,19 @@ $(document).ready(function() {
 	</tr>
 </thead>
 <tbody>
-<?php
-	foreach ($r_sol_tec as $key => $value){		
-?>
+<?php foreach ($r_sol_tec as $key => $value) { ?>
 	<tr>
 		<td><?php echo $value['id']?></td>
 		<td align="center"><?php echo $value['tecnico1'] ?></td>
 		<td><?php echo $value['tecnico2'] ?></td>
-
-<td>	
-	<select required name="tipotrabajoid" id="tipotrabajoid_<?php echo $key ?>" style="width:150px">
-	<option value="">-Seleccione-</option>							
-	<?php foreach ($value['tipotrabajos'] as $key => $tipotrabajo ) { ?>
-		<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
-	<?php } ?>
-	</select>
-</td>
+		<td>	
+			<select required name="tipotrabajoid" id="tipotrabajoid_<?=$key?>" style="width:150px">
+				<option value="">-Seleccione-</option>							
+				<?php foreach ($value['tipotrabajos'] as $key2 => $tipotrabajo ) { ?>
+				<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
+				<?php } ?>
+			</select>
+		</td>
 		<td align="center">
 		<input required type="date" style="width:130px" id="fecha_instalacion_<?php echo $key ?>" name="fecha_instalacion_<?php echo $key ?>" value="<?=(@$value['fecha']) ? $value['fecha'] : null?>"></td>
 
