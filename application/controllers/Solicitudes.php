@@ -526,7 +526,8 @@ class Solicitudes extends CI_Controller {
 		if ( @$_POST['carga'] ) {
 			$file = $_FILES['file']['tmp_name'];
 			$type = $_FILES['file']['type'];
-			if ( !empty($file) && ( $type == 'application/vnd.ms-excel' ) ) {
+			var_dump($type);
+			if ( !empty($file) && ( $type == 'application/vnd.ms-excel' ) ) {	
 				$handle = fopen($file, "r");
 				$fila = 1;
 				$datos = array();
