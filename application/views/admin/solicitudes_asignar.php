@@ -124,6 +124,7 @@ $(document).ready(function() {
 </thead>
 <tbody>
 <?php foreach ($r_sol_tec as $key => $value) { ?>
+<?php if ( isset($_GET['test']) ) var_dump($key); ?>
 	<tr>
 		<td><?php echo $value['id']?></td>
 		<td align="center"><?php echo $value['tecnico1'] ?></td>
