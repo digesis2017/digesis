@@ -7,7 +7,8 @@ $(document).ready(function() {
 	$("#sid").blur(function() {
   		$.post( "../validateSid", { sid: $(this).val(), evento : $("#status").val(), asid : $("#asid").val() ? $("#asid").val() : 0 })
   		.done(function( data ) {
-  			if ( data == 'OK' ) {
+  			response = JSON.parse(data);
+  			if ( response.success ) {
   				$(".check").show('fast');
   				$(".nocheck").hide('fast');
   			}

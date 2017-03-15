@@ -495,26 +495,26 @@ class Solicitudes extends CI_Controller {
 
 				if ( $_POST['evento'] == 'add' ) {
 					if ( $this->msolicitudes->solicitudes_validate($_POST['sid']) )
-						echo 'error';
+						echo json_encode(array('error' => 1));
 					else
-						echo 'OK';
+						echo json_encode(array('success' => true));
 				}
 				else {
 					if ( (int)$_POST['asid'] == (int)$_POST['sid'] )
-						echo 'OK';
+						echo json_encode(array('success' => true));
 					else if ( $this->msolicitudes->solicitudes_validate($_POST['sid']) )
-						echo 'error';
+						echo json_encode(array('error' => 1));
 					else
-						echo 'OK';
+						echo json_encode(array('success' => true));
 				}
 
 			}
 			else
-				echo 'error';
+				echo json_encode(array('error' => 1));
 
 		}
 		else
-			echo 'error';
+			echo json_encode(array('error' => 1));
 	}
 
 	public function carga() {
