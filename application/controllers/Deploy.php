@@ -10,14 +10,15 @@ class Deploy extends CI_Controller {
 
 	public function index() {
 
-$LOCAL_ROOT='/var/www/html';
+#$LOCAL_ROOT='/var/www/html';
+$LOCAL_ROOT='D:\wamp\www\disgesis'	
 $LOCAL_REPO_NAME="digesis.git";
 $LOCAL_REPO="{$LOCAL_ROOT}/$LOCAL_REPO_NAME";
 $REMOTE_REPO="https://github.com/digesis2017/digesis.git";
 $DESIRED_BRANCH="master";
 
 if (file_exists($LOCAL_ROOT)){
-	shell_exec("rm -rf {$LOCAL_REPO_NAME}");
+	shell_exec("rmdir c:\{$LOCAL_REPO_NAME} /s /q ");
 }
 
 if (file_exists($LOCAL_REPO)):
