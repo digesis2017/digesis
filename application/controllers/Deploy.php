@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Deploy extends CI_Controller {
-	public function __construct() {
+public function __construct() {
+	
 		parent::__construct();
-	}
-	public function index() {
+}
+public function index() {
 #$LOCAL_ROOT='/var/www/html';
 $LOCAL_ROOT='D:\wamp\www\disgesis'	
 $LOCAL_REPO_NAME="digesis.git";
