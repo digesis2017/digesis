@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Deploy extends CI_Controller {
-public function __construct() {
-	
-		parent::__construct();
+public function __construct()
+{
+	parent::__construct();
 }
 public function index() {
 #$LOCAL_ROOT='/var/www/html';
@@ -21,6 +21,6 @@ else :
   echo shell_exec("cd {$LOCAL_ROOT} && git clone {$REMOTE_REPO} {$LOCAL_REPO_NAME} && cd {$LOCAL_REPO} && git checkout {$DESIRED_BRANCH}");
 endif;
 date_default_timezone_set('America/Lima');
-die("done " . date('Y-m-d h:i:s a', time()) . "\n"  ) ;
+die("deploy " . date('Y-m-d h:i:s a', time()) . "\n"  ) ;
 }
 }
