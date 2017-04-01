@@ -27,7 +27,7 @@ if (file_exists($LOCAL_REPO)):
 
 else :  
   echo shell_exec("cd {$LOCAL_ROOT} && git clone {$REMOTE_REPO} {$LOCAL_REPO_NAME} && cd {$LOCAL_REPO} && git checkout {$DESIRED_BRANCH}");
-echo 'paso3';
+echo "cd {$LOCAL_ROOT} && git clone {$REMOTE_REPO} {$LOCAL_REPO_NAME} && cd {$LOCAL_REPO} && git checkout {$DESIRED_BRANCH}";
 endif;
 
 date_default_timezone_set('America/Lima');
