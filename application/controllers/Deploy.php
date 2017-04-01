@@ -12,6 +12,7 @@ $LOCAL_REPO_NAME="digesis";
 $LOCAL_REPO="{$LOCAL_ROOT}/$LOCAL_REPO_NAME";
 $REMOTE_REPO="https://github.com/digesis2017/digesis.git";
 $DESIRED_BRANCH="master";
+echo 'aqui';
 if (file_exists($LOCAL_ROOT)){
 	shell_exec("rmdir D:\{$LOCAL_REPO_NAME} /s /q ");
 }
