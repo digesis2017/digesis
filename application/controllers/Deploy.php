@@ -8,7 +8,7 @@ class Deploy extends CI_Controller {
 
 	}
 
-	public function index() {
+public function index() {
 
 $LOCAL_ROOT='/var/www';
 $LOCAL_REPO_NAME="digesis";
