@@ -10,6 +10,10 @@ class Deploy extends CI_Controller {
 
 public function index() {
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $LOCAL_ROOT='/var/www/digesis';
 $LOCAL_REPO_NAME="digesis";
 $LOCAL_REPO="{$LOCAL_ROOT}/{$LOCAL_REPO_NAME}";
