@@ -22,7 +22,7 @@ if (file_exists($LOCAL_ROOT)){
 }
 
 if (file_exists($LOCAL_REPO)):
-	echo 'paso2';
+	echo 'paso2'."cd {$LOCAL_REPO} && git pull";
   echo shell_exec("cd {$LOCAL_REPO} && git pull");
 
 else :  
