@@ -12,7 +12,7 @@ public function index() {
 
 $LOCAL_ROOT='/var/www/digesis';
 $LOCAL_REPO_NAME="digesis";
-$LOCAL_REPO="{$LOCAL_ROOT}/$LOCAL_REPO_NAME";
+$LOCAL_REPO="{$LOCAL_ROOT}/{$LOCAL_REPO_NAME}";
 $REMOTE_REPO="https://github.com/digesis2017/digesis.git";
 $DESIRED_BRANCH="master";
 
