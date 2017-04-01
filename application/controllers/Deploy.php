@@ -7,7 +7,7 @@ public function __construct()
 }
 public function index() {
 #$LOCAL_ROOT='/var/www/html';
-$LOCAL_ROOT='D:\wamp\www\disgesis'	
+$LOCAL_ROOT='D:/wamp/www/disgesis'	
 $LOCAL_REPO_NAME="digesis.git";
 $LOCAL_REPO="{$LOCAL_ROOT}/$LOCAL_REPO_NAME";
 $REMOTE_REPO="https://github.com/digesis2017/digesis.git";
