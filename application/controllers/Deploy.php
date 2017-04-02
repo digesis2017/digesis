@@ -27,7 +27,8 @@ if (file_exists($LOCAL_ROOT)){
 
 if (file_exists($LOCAL_REPO)):
 	echo 'paso2'."cd {$LOCAL_REPO} && git pull";
-  echo shell_exec("cd {$LOCAL_REPO} && git pull");
+    echo shell_exec("cd {$LOCAL_REPO}");
+    echo shell_exec("git pull");
 
 else :  
   echo shell_exec("cd {$LOCAL_ROOT} && git clone {$REMOTE_REPO} {$LOCAL_REPO_NAME} && cd {$LOCAL_REPO} && git checkout {$DESIRED_BRANCH}");
