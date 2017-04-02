@@ -2,7 +2,6 @@
 
 application/config/database.php
 application/config/config.php
-application/config/controlers/Deploy.php
 deploy.php
 
 application/cache/*
