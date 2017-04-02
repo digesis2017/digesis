@@ -174,11 +174,13 @@ window.location.href=url;
 							<th>SOT reprogramados</th>	  
 							<th>SOT rechazados</th>	
 							<th>Pend. asignar</th>
+							<th>Pend. RF</th>
 						</tr>
 					</thead>
 					<tbody>
 	<?php 	
 	if (!empty($supervisor)):				
+		///print_r($supervisor);
 	foreach($supervisor as $key=>$value):
 	?>
 	<tr>	
@@ -193,7 +195,11 @@ window.location.href=url;
 	<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
 
 	<td data-label="Pend. asignar"><?php echo count($value['nuevos']) ?></td>						
+	
+
+	<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>						
 	</tr>
+
 	<?php 
 		endforeach;
 		endif;

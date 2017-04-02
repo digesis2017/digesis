@@ -18,15 +18,13 @@ class Encuestas extends CI_Controller {
 			if ( is_object($datat) ) {
 				$tid = $datat->id;
 				$data['nuevos'] = $this->msolicitudes->solicitudes_encuestas($tid, 1, true);
-				//var_dump($data['nuevos']);
 				$data['atendidos'] = $this->msolicitudes->solicitudes_encuestas($tid, 2, true);				
-				
 				$data['pendientes'] = $this->msolicitudes->solicitudes_encuestas($tid, 3);
 				$data['reprogramados'] = $this->msolicitudes->solicitudes_encuestas($tid, 4, true);
 				$data['rechazados'] = $this->msolicitudes->solicitudes_encuestas($tid, 5, true);
 				$data['sinfotos'] = $this->msolicitudes->solicitudesrf_encuestas($tid);
 				$data['estados'] = $this->msolicitudes->estados_entrys();
-
+				
 				$data['mreprogramados'] = $this->msolicitudes->motivos_entrys(4);
 				$data['mpendientes'] = $this->msolicitudes->motivos_entrys(3);
 				$data['mrechazados'] = $this->msolicitudes->motivos_entrys(5);
@@ -188,6 +186,8 @@ public function supervisor($dni=null,$fecha=null) {
 
 	$r_supervisor=$this->msupervisores->supervisores_ByDni($_GET['dni']);
 
+
+
 $data=array();
 $acumulador=array('nuevos'=>0,'atendidos'=>0,'pendientes'=>0,'reprogramados'=>0,'rechazados'=>0);
 
@@ -200,6 +200,7 @@ foreach ($r_supervisor as $key => $value_sup) {
 	$r_tecnicos=$this->mtecnicos->tecnicos_bySupervisor2($value_sup->id);
 
 	$acumulador['nuevos']=0;		
+	//print_r($r_tecnicos);
 	foreach ($r_tecnicos as $key => $value) {		
 		$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
 
@@ -227,11 +228,16 @@ foreach ($r_supervisor as $key => $value_sup) {
 			$acumulador['reprogramados']=intval($acumulador['reprogramados']) + count($data['supervisor'][$key]['reprogramados']);
 
 
+
 			$data['supervisor'][$key]['rechazados']=$this->msolicitudes->solicitudes_encuestas($tid, 5, false,$fecha);	
 
 			$acumulador['rechazados']=intval($acumulador['rechazados']) + count($data['supervisor'][$key]['rechazados']);
 
 			$data['supervisor'][$key]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
+
+
+		//print_r($data['supervisor'][$key]['sinfotos']);
+
 
 			$data['supervisor'][$key]['estados']= $this->msolicitudes->estados_entrys();
 
@@ -288,6 +294,7 @@ foreach ($r_jefes as $key => $value_jefes) {
 	$sum_sup[$key_sup]['pendientes']=0;
 	$sum_sup[$key_sup]['reprogramados']=0;
 	$sum_sup[$key_sup]['rechazados']=0;
+	$sum_sup[$key_sup]['sinfotos']=0;
 
 	foreach ($r_tecnicos as $key_tecnico => $value)	{
 		$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
@@ -330,6 +337,11 @@ $data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['atendidos']=$this->m
 	$sum_sup[$key_sup]['rechazados']=intval($sum_sup[$key_sup]['rechazados'])+ count($data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['rechazados']);
 
 			$data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
+
+
+	$sum_sup[$key_sup]['sinfotos']=intval($sum_sup[$key_sup]['sinfotos'])+ count($data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['sinfotos']);
+
+
 
 			$data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['estados']= $this->msolicitudes->estados_entrys();
 

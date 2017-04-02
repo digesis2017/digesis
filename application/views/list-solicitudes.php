@@ -12,7 +12,10 @@
 	</head>
 
 	<body>
-	<?php //echo $resumen_billetera?>
+
+	<?php 
+		date_default_timezone_set('America/Lima');
+	//echo $resumen_billetera?>
 		<div class="ui-popup-options">
 			<input type="hidden" id="evento" value="" />
 			<a href="#" class="ui-popup-close"></a>
@@ -124,11 +127,13 @@
 			<div class="cont_logo">
 				<img src="<?=base_url()?>encuesta/img/logo.png"/>
 			</div>
+			<!--
 			<div class="cont_billetera">
 				<a  href="#" class="billetera" style="margin-right: 15px;">
-					<img style="width: 40px;height: 40px;" src="/digesis/encuesta/img/monedero.png">
+					<img style="width: 40px;height: 40px;" src="/encuesta/img/monedero.png">
 				</a>
 			</div>	
+			-->
 			<div style="clear: both;"></div>
 			</header>
 		</a>
@@ -260,6 +265,11 @@
 									<div class="data2"><?=$pendiente->id?></div>
 									<div class="data1">MOTIVO</div>
 									<div class="data2"><?=isset($pendiente->motivo)?$pendiente->motivo:'-'?></div>
+
+									<div class="data1">FECHA INSTALACION</div>
+									<div class="data2">
+			<?=date('Y-m-d 00:00:00',$pendiente->fecha_instalacion)?></div>
+
 									<div class="data1">HORA</div>
 									<div class="data2"><?=$pendiente->hora?></div>
 									<div class="data1">CLIENTE</div>
@@ -295,6 +305,14 @@
 									<div class="data2"><?=$sinfoto->direccion?></div>
 									<div class="data1">PLANO</div>
 									<div class="data2"><?=$sinfoto->plano?></div>
+
+
+									<div class="data1">FECHA INSTALACION</div>
+<div class="data2"><?=date('Y-m-d 00:00:00',$sinfoto->fecha_instalacion)?>
+									</div>
+									
+
+
 									<div class="data1">ESTADO</div>
 									<div class="data2 combo step1 combo-ui">                                             
 										<select disabled>

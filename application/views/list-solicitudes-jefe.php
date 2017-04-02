@@ -175,6 +175,7 @@ window.location.href=url;
 							<th>SOT reprogramados</th>	  
 							<th>SOT rechazados</th>
 							<th>Pend. de asignar</th>
+							<th>Pend. de RF</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -198,6 +199,9 @@ window.location.href=url;
 
 	<td data-label="Pend. de asignar">
 	<?php echo $sum_sup[$key_sup]['nuevos'] ?></td>	
+
+	<td data-label="Pend. de RF">
+	<?php echo $sum_sup[$key_sup]['sinfotos'] ?></td>	
 
 	</td>
 	</tr>
