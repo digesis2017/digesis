@@ -127,7 +127,7 @@
 			<div class="cont_logo">
 				<img src="<?=base_url()?>encuesta/img/logo.png"/>
 			</div>
-			
+			holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 			<!--
 			<div class="cont_billetera">
 				<a  href="#" class="billetera" style="margin-right: 15px;">
