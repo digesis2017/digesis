@@ -11,7 +11,6 @@ class Encuestas extends CI_Controller {
 	}
 
 	public function index() {
-		echo 'vamos peru';
 		if ( isset($_GET['dni']) && ( !empty($_GET['dni']) ) ) {
 			$this->load->model('mtecnicos');
 			$datat = $this->mtecnicos->tecnicobyDNI($_GET['dni']);
