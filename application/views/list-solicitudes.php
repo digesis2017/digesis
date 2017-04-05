@@ -309,7 +309,7 @@
 
 
 									<div class="data1">FECHA INSTALACION</div>
-<div class="data2"><?=date('Y-m-d 00:00:00',$sinfoto->fecha_instalacion)?>
+<div class="data2"><?=date('Y-m-d', $sinfoto->fecha_instalacion) . ' ' . $sinfoto->hora?>
 									</div>
 									
 
