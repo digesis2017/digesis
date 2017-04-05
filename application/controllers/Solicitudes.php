@@ -150,8 +150,11 @@ class Solicitudes extends CI_Controller {
 	public function asignar() {
 		$session = get_session();
 		$request=$this->input->post();    
+
+		var_dump($request); die();
+
 		$data=json_decode($request['data']);
-		var_dump($data); die();
+
 		foreach ( $data as $key => $value ) {
           	
 		$formdata = array(
