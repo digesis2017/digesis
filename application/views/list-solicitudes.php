@@ -268,9 +268,7 @@
 									<div class="data2"><?=isset($pendiente->motivo)?$pendiente->motivo:'-'?></div>
 
 									<div class="data1">FECHA INSTALACION</div>
-									<div class="data2">
-			<?=date('Y-m-d 00:00:00',$pendiente->fecha_instalacion)?></div>
-
+									<div class="data2"><?=date('Y-m-d', $pendiente->fecha_instalacion) . ' ' . $sinfoto->hora?></div>
 									<div class="data1">HORA</div>
 									<div class="data2"><?=$pendiente->hora?></div>
 									<div class="data1">CLIENTE</div>
