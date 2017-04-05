@@ -153,7 +153,6 @@ class Solicitudes extends CI_Controller {
 		$data=json_decode($request['data']);
 
 		foreach ( $data as $key => $value ) {
-          	
 			$formdata = array(
 				'sid' => $value->id,
 				'supid' =>$request['supervisorid'], 
@@ -161,7 +160,6 @@ class Solicitudes extends CI_Controller {
 				't2id' => $request['tecnico2id'], 
 				'aid' => $session->id
 			);
-		
 			$this->msolicitudes->solicitudes_addtecnicos($formdata);
 			$formdata = array(
 				'id' =>$value->id,
@@ -169,10 +167,8 @@ class Solicitudes extends CI_Controller {
 				'hora' => $value->hora,
 				'modtime' => strtotime("now"),
 				'tipotrabajoid'=>$value->tipotrabajoid
-			);		
-
+			);
 			$this->msolicitudes->solicitudes_update($formdata, $value->id);
-				
 		}
      	return json_encode(array('msg'=>'ok'));
 	}
