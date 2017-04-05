@@ -63,11 +63,11 @@ $(document).ready(function() {
 				//alert(obj.msg);
 				$("#msg_asignacion").fadeOut();
 				$("#msg_asignacion").removeClass('hidden');				
-				setTimeout(function() {
+				/*setTimeout(function() {
 				$("#msg_asignacion").fadeIn();
     			$("#msg_asignacion").addClass('hidden');
-    			//document.location.href="<?=base_url()?>index.php/solicitudes/listatecnicos";
-				//}, 3000);
+    			document.location.href="<?=base_url()?>index.php/solicitudes/listatecnicos";
+				}, 3000);*/
 
 
 
