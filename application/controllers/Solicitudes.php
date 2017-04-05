@@ -149,36 +149,32 @@ class Solicitudes extends CI_Controller {
 
 	public function asignar() {
 		$session = get_session();
-		$request=$this->input->post();    
-
-		var_dump($request); die();
-
+		$request=$this->input->post();
 		$data=json_decode($request['data']);
 
 		foreach ( $data as $key => $value ) {
           	
-		$formdata = array(
-			'sid' => $value->id,
-			'supid' =>$request['supervisorid'], 
-			't1id' => $request['tecnico1id'], 
-			't2id' => $request['tecnico2id'], 
-			'aid' => $session->id
-		);
-	
-		$this->msolicitudes->solicitudes_addtecnicos($formdata);
-		$formdata = array(
-			'id' =>$value->id,
-			'fecha_instalacion' => $value->fecha? strtotime($value->fecha) : strtotime('now'),
-			'hora' => $value->hora,
-			'modtime' => strtotime("now"),
-			'tipotrabajoid'=>$value->tipotrabajoid
-		);		
+			$formdata = array(
+				'sid' => $value->id,
+				'supid' =>$request['supervisorid'], 
+				't1id' => $request['tecnico1id'], 
+				't2id' => $request['tecnico2id'], 
+				'aid' => $session->id
+			);
+		
+			$this->msolicitudes->solicitudes_addtecnicos($formdata);
+			$formdata = array(
+				'id' =>$value->id,
+				'fecha_instalacion' => $value->fecha? strtotime($value->fecha) : strtotime('now'),
+				'hora' => $value->hora,
+				'modtime' => strtotime("now"),
+				'tipotrabajoid'=>$value->tipotrabajoid
+			);		
 
-		$this->msolicitudes->solicitudes_update($formdata, $value->id);
+			$this->msolicitudes->solicitudes_update($formdata, $value->id);
 				
-     }
-     return json_encode(array('msg'=>'ok'));
-
+		}
+     	return json_encode(array('msg'=>'ok'));
 	}
 
 	public function listarf($estadorf = 0) {
