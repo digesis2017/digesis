@@ -57,21 +57,16 @@ $(document).ready(function() {
 			url : '/digesis/index.php/solicitudes/asignar',
 			processData: false, 
 			contentType: false,
-			success: function(r){
+			success: function(r) {
 				console.log(r);
 				//obj = JSON.parse(r);
-				//alert(obj.msg);
 				$("#msg_asignacion").fadeOut();
 				$("#msg_asignacion").removeClass('hidden');				
-				/*setTimeout(function() {
+				setTimeout(function() {
 				$("#msg_asignacion").fadeIn();
     			$("#msg_asignacion").addClass('hidden');
     			document.location.href="<?=base_url()?>index.php/solicitudes/listatecnicos";
-				}, 3000);*/
-
-
-
-
+				}, 3000);
 			}
 		});
 
