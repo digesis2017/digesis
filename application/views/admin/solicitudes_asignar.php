@@ -174,7 +174,7 @@ $(document).ready(function() {
 						<tr>
 							<td>Supervisor : </td>
 							<td>
-								<select name="supid" id="supervisorid">
+								<select required name="supid" id="supervisorid">
 									<option value="0">-Seleccione-</option>
 									<?php foreach ( $supervisores as $key => $supervisor ) { ?>
 									<option <?=(@$data->supid==$key ? 'selected' : '')?>  value="<?=$key?>"><?=$supervisor?></option>
