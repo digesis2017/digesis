@@ -88,10 +88,10 @@ class Solicitudes extends CI_Controller {
 				$data['provincias'] = $this->mdepartamentos->provincias_entrys($data['data']->departamentoid);
 				$data['estados'] = $this->msolicitudes->estados_entrys();
 				$data['motivos'] = $this->msolicitudes->solicitudes_motivos($data['data']->estadoid);
-				if (@$data['data']->supid){
+				if ( @$data['data']->supid ) {
 					$data['tecnicos1'] = $this->mtecnicos->tecnicos_bySupervisor($data['data']->supid, 1);
 					$data['tecnicos2'] = $this->mtecnicos->tecnicos_bySupervisor($data['data']->supid, 2);
-					}
+				}
 			}
 			else
 				redirect('solicitudes');
@@ -386,8 +386,8 @@ class Solicitudes extends CI_Controller {
 			$formdata = array(
 				'sid' => $this->input->post('solicitudid'),
 				'supid' => $this->input->post('supid'),
-				't1id' => $this->input->post('tecnico1id'),
-				't2id' => $this->input->post('tecnico2id'),
+				't1id' => $this->input->post('tecnico1id') ? $this->input->post('tecnico1id') : 0,
+				't2id' => $this->input->post('tecnico2id') ? $this->input->post('tecnico2id') : 0,
 				'aid' => $this->input->post('analistaid')
 			);
 			$this->msolicitudes->solicitudes_addtecnicos($formdata);
