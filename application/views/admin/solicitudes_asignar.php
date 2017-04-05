@@ -57,10 +57,9 @@ $(document).ready(function() {
 			url : '/digesis/index.php/solicitudes/asignar',
 			processData: false, 
 			contentType: false,
-			success: function(r){
+			success: function(r) {
 				console.log(r);
 				//obj = JSON.parse(r);
-				//alert(obj.msg);
 				$("#msg_asignacion").fadeOut();
 				$("#msg_asignacion").removeClass('hidden');				
 				setTimeout(function() {
@@ -68,10 +67,6 @@ $(document).ready(function() {
     			$("#msg_asignacion").addClass('hidden');
     			document.location.href="<?=base_url()?>index.php/solicitudes/listatecnicos";
 				}, 3000);
-
-
-
-
 			}
 		});
 
@@ -123,22 +118,19 @@ $(document).ready(function() {
 	</tr>
 </thead>
 <tbody>
-<?php
-	foreach ($r_sol_tec as $key => $value){		
-?>
+<?php foreach ( $r_sol_tec as $key => $value ) { ?>
 	<tr>
 		<td><?php echo $value['id']?></td>
 		<td align="center"><?php echo $value['tecnico1'] ?></td>
 		<td><?php echo $value['tecnico2'] ?></td>
-
-<td>	
-	<select required name="tipotrabajoid" id="tipotrabajoid_<?php echo $key ?>" style="width:150px">
-	<option value="">-Seleccione-</option>							
-	<?php foreach ($value['tipotrabajos'] as $key => $tipotrabajo ) { ?>
-		<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
-	<?php } ?>
-	</select>
-</td>
+		<td>
+			<select required name="tipotrabajoid" id="tipotrabajoid_<?php echo $key ?>" style="width:150px">
+				<option value="">-Seleccione-</option>							
+				<?php foreach ($value['tipotrabajos'] as $key2 => $tipotrabajo ) { ?>
+				<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
+				<?php } ?>
+			</select>
+		</td>
 		<td align="center">
 		<input required type="date" style="width:130px" id="fecha_instalacion_<?php echo $key ?>" name="fecha_instalacion_<?php echo $key ?>" value="<?=(@$value['fecha']) ? $value['fecha'] : null?>"></td>
 
@@ -182,7 +174,7 @@ $(document).ready(function() {
 						<tr>
 							<td>Supervisor : </td>
 							<td>
-								<select name="supid" id="supervisorid">
+								<select required name="supid" id="supervisorid">
 									<option value="0">-Seleccione-</option>
 									<?php foreach ( $supervisores as $key => $supervisor ) { ?>
 									<option <?=(@$data->supid==$key ? 'selected' : '')?>  value="<?=$key?>"><?=$supervisor?></option>
