@@ -24,7 +24,7 @@ class Encuestas extends CI_Controller {
 				$data['rechazados'] = $this->msolicitudes->solicitudes_encuestas($tid, 5, true);
 				$data['sinfotos'] = $this->msolicitudes->solicitudesrf_encuestas($tid);
 				$data['estados'] = $this->msolicitudes->estados_entrys();
-				print_r($data['sinfotos']);
+				//print_r($data['sinfotos']);
 				$data['mreprogramados'] = $this->msolicitudes->motivos_entrys(4);
 				$data['mpendientes'] = $this->msolicitudes->motivos_entrys(3);
 				$data['mrechazados'] = $this->msolicitudes->motivos_entrys(5);
