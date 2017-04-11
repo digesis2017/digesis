@@ -130,7 +130,7 @@ $(document).ready(function() {
 				<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
 				<?php } ?>
 			</select>-->
-			<input type="text" name="tipotrabajoid" id="tipotrabajoid_<?=$key?>" size="40" value=<?=@$data->tipotrabajo?>>
+			<input type="text" name="tipotrabajoid" id="tipotrabajoid_<?=$key?>" size="40" value=<?=@$value['tipotrabajo']?>>
 		</td>
 		<td align="center">
 		<input required type="date" style="width:130px" id="fecha_instalacion_<?php echo $key ?>" name="fecha_instalacion_<?php echo $key ?>" value="<?=(@$value['fecha']) ? $value['fecha'] : null?>"></td>
