@@ -226,16 +226,16 @@ class Solicitudes extends CI_Controller {
 		$data['tiposervicios'] = $this->msolicitudes->tiposservicio_entrys();
 
 		$categoria=null;
-	if ($data['data']->tiposervicioid==self::SERVICIO_INSTALACIONES)
-		$categoria="instalacion";
+		if ($data['data']->tiposervicioid==self::SERVICIO_INSTALACIONES)
+			$categoria="instalacion";
 
-	if ($data['data']->tiposervicioid==self::SERVICIO_MANTENIMIENTO)
-		$categoria='mantenimiento';
+		if ($data['data']->tiposervicioid==self::SERVICIO_MANTENIMIENTO)
+			$categoria='mantenimiento';
 
-	if ($data['data']->tiposervicioid==self::SERVICIO_POST_VENTA)
-		$categoria='post instalacion';
+		if ($data['data']->tiposervicioid==self::SERVICIO_POST_VENTA)
+			$categoria='post instalacion';
 
-		$data['tipotrabajos']=$this->mservicios->getByCategoria($categoria);
+		//$data['tipotrabajos']=$this->mservicios->getByCategoria($categoria);
 
 		if ( @$data['data']->supid ) {
 			$data['tecnicos1'] = $this->mtecnicos->tecnicos_bySupervisor($data['data']->supid, 1);
