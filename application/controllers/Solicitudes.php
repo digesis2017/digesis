@@ -368,7 +368,8 @@ class Solicitudes extends CI_Controller {
 			$session = get_session();
 			$formdata = array (
 				'id' => $this->input->post('solicitudid'),
-				'tipotrabajoid' => $this->input->post('tipotrabajoid'),
+				//'tipotrabajoid' => $this->input->post('tipotrabajoid'),
+				'tipotrabajo' => $this->input->post('tipotrabajoid'),
 				'tiposervicioid' => $this->input->post('tiposervicioid'),
 				'plano' => $this->input->post('plano'),
 				'cliente' => $this->input->post('cliente'),
@@ -404,7 +405,8 @@ class Solicitudes extends CI_Controller {
 			$fecha=$this->input->post('fecha_instalacion');			
 			$formdata = array (
 				'id' => $this->input->post('solicitudid'),
-				'tipotrabajoid' => $this->input->post('tipotrabajoid'),
+				//'tipotrabajoid' => $this->input->post('tipotrabajoid'),
+				'tipotrabajo' => $this->input->post('tipotrabajoid'),
 				'tiposervicioid' => $this->input->post('tiposervicioid'),
 				'plano' => $this->input->post('plano'),
 				'cliente' => $this->input->post('cliente'),

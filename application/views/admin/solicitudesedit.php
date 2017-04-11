@@ -80,12 +80,13 @@ $(document).ready(function() {
 				<tr>
 					<td>Tipo de Trabajo : </td>
 					<td>
-			<select required name="tipotrabajoid" id="tipotrabajoid">
+						<!--<select required name="tipotrabajoid" id="tipotrabajoid">
 							<option value="">-Seleccione-</option>							
 							<?php foreach ( $tipotrabajos as $key => $tipotrabajo ) { ?>
 								<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
 							<?php } ?>
-						</select>
+						</select>-->
+						<input type="text" name="tipotrabajoid" size="40" value=<?=@$data->tipotrabajo?>>
 					</td>
 				</tr>
 				<tr>
