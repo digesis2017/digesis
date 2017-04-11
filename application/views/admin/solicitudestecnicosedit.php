@@ -46,7 +46,7 @@
 								<option <?=(@$data->tipotrabajoid==$tipotrabajo->id ? 'selected' : '')?>  value="<?=$tipotrabajo->id?>"><?=$tipotrabajo->descripcion?></option>
 							<?php } ?>
 						</select>-->
-						<input disabled type="text" name="tipotrabajoid" size="40" value=<?=@$data->tipotrabajo?>>
+						<input type="text" name="tipotrabajoid" size="40" value=<?=@$data->tipotrabajo?>>
 					</td>
 				</tr>
 			</table>
