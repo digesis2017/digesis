@@ -123,7 +123,7 @@ class Solicitudes extends CI_Controller {
 				$r_sol_tec[$value->id]['id']=$value->id;		
 				$r_sol_tec[$value->id]['tecnico1']=(($value->tecnico1!="")?$value->tecnico1:"sin asignar");
 				$r_sol_tec[$value->id]['tecnico2']=(($value->tecnico2!="")?$value->tecnico2:"sin asignar");
-				$categoria=null;
+				/*$categoria=null;
 				if ($value->tiposervicioid==self::SERVICIO_INSTALACIONES)
 					$categoria="instalacion";
 
@@ -133,7 +133,7 @@ class Solicitudes extends CI_Controller {
 				if ($value->tiposervicioid==self::SERVICIO_POST_VENTA)
 					$categoria='post instalacion';
 		
-				$r_sol_tec[$value->id]['tipotrabajos']=$this->mservicios->getByCategoria($categoria);
+				$r_sol_tec[$value->id]['tipotrabajos']=$this->mservicios->getByCategoria($categoria);*/
 				$r_sol_tec[$value->id]['fecha']=($value->fecha_instalacion==0)? 'Sin asignar': date('Y-m-d',$value->fecha_instalacion);
 				$r_sol_tec[$value->id]['hora']=(($value->hora!="")? $value->hora:"12:00");
 			}
@@ -166,7 +166,8 @@ class Solicitudes extends CI_Controller {
 				'fecha_instalacion' => $value->fecha? strtotime($value->fecha) : strtotime('now'),
 				'hora' => $value->hora,
 				'modtime' => strtotime("now"),
-				'tipotrabajoid'=>$value->tipotrabajoid
+				//'tipotrabajoid' => $value->tipotrabajoid
+				'tipotrabajo' => $value->tipotrabajoid
 			);
 			$this->msolicitudes->solicitudes_update($formdata, $value->id);
 		}

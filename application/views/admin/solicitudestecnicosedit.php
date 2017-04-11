@@ -1,4 +1,18 @@
 			</div>
+			<script>
+				$(document).ready(function() {
+					$('.timepicker').timepicker({
+					    timeFormat: 'H:mm',
+					    interval: 30,
+					    minTime: '10',
+					    maxTime: '19:00',    
+					    startTime: '08:00',
+					    dynamic: false,
+					    dropdown: true,
+					    scrollbar: true
+					});
+				});
+			</script>
 			<script src="<?=base_url()?>js/departamentos.js"></script>
 			<script src="<?=base_url()?>js/tecnicos.js"></script>
 
@@ -24,7 +38,7 @@
 					<td>Fecha de Programación : </td><td><input required type="date" name="fecha_instalacion" value="<?=(@$data->fecha_instalacion) ? date('Y-m-d', $data->fecha_instalacion) : null?>"></td>
 				</tr>
 				<tr>
-					<td>Hora : </td><td><input type="text" name="hora" maxlength="5" value="<?=@$data->hora?>"></td>
+					<td>Hora : </td><td><input type="text" name="hora" class="timepicker" maxlength="5" value="<?=@$data->hora?>"></td>
 				</tr>
 				<tr>
 					<td>Tipo de Serviciooos : </td>
