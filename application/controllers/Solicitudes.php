@@ -120,7 +120,8 @@ class Solicitudes extends CI_Controller {
 			$sol_mult = $this->msolicitudes->solicitudes_asignar_multiple($sots);
 			$r_sol_tec = [];
 			foreach ( $sol_mult as $key => $value ) {
-				$r_sol_tec[$value->id]['id']=$value->id;		
+				$r_sol_tec[$value->id]['id']=$value->id;
+				$r_sol_tec[$value->id]['tipotrabajo']= $value->tipotrabajo;
 				$r_sol_tec[$value->id]['tecnico1']=(($value->tecnico1!="")?$value->tecnico1:"sin asignar");
 				$r_sol_tec[$value->id]['tecnico2']=(($value->tecnico2!="")?$value->tecnico2:"sin asignar");
 				/*$categoria=null;
