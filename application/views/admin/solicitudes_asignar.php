@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 		var id =$(this).attr('data-id');
 		var fecha=$('input#fecha_instalacion_'+id).val();	
-		var tipotrabajoid=$('select#tipotrabajoid_'+id).val();	  	
+		var tipotrabajoid=$('input#tipotrabajoid_'+id).val();	  	
       	item['id']=$(this).attr('data-id');
       	item['fecha']=fecha;
       	item['hora']=$(this).val();
