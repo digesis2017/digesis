@@ -476,6 +476,7 @@ class Solicitudes extends CI_Controller {
 			'tipotrabajo' => $this->input->post('tipotrabajoid'),
 			'modtime' => strtotime("now")
 		);
+		var_dump($formdata); die();
 		$this->msolicitudes->solicitudes_update($formdata, $id);
 		if ( $_GET['flag'] == 'seguimiento')
 			redirect('solicitudes/seguimiento');
