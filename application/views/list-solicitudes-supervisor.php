@@ -32,7 +32,7 @@
 function alertpopup(estado, id) {
 	//$.post('encuestas/mostrar_ventana/',
 	//	function(data){
-			$("#dialog_mi_popup").html('xdd');
+			$("#dialog_mi_popup").html(estado + ' ' + id);
 			$("#dialog_mi_popup").dialog( "open" );
 	//	}
 	//);
