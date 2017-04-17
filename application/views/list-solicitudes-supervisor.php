@@ -30,7 +30,7 @@
 	});
 
 function alertpopup(estado, id) {
-	$.post('/encuestas/popup', { 'estado' : estado, 'tecnicoid' : id, 'fecha' : $("#fecha").val() },
+	$.post('/index.php/encuestas/popup', { 'estado' : estado, 'tecnicoid' : id, 'fecha' : $("#fecha").val() },
 		function(data){
 			$("#dialog_mi_popup").html(data);
 			$("#dialog_mi_popup").dialog( "open" );
