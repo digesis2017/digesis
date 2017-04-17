@@ -220,7 +220,7 @@ window.location.href=url;
 	<td data-label="Pend. de asignar">0</td>
 	<?php } ?>
 
-	<?php if ( count($sum_sup[$key_sup]['nuevos']) ) { ?>
+	<?php if ( count($sum_sup[$key_sup]['sinfotos']) ) { ?>
 	<td data-label="Pend. de RF"><a href="#" onclick="alertpopup('sinfotos', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['sinfotos']?></a></td>
 	<?php } else { ?>
 	<td data-label="Pend. de RF">0</td>
