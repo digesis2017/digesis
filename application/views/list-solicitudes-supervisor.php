@@ -29,8 +29,6 @@
 		});
 	});
 
-$(function() {
-
 function alertpopup(estado, id) {
 	//$.post('encuestas/mostrar_ventana/',
 	//	function(data){
@@ -39,6 +37,8 @@ function alertpopup(estado, id) {
 	//	}
 	//);
 }
+
+$(function() {
 
 function getParameterByName(name, url) {
     if (!url) {
