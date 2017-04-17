@@ -213,7 +213,7 @@ public function supervisor($dni=null,$fecha=null) {
 			}
 		}
 		$data['acumulador']=$acumulador;
-		print_r($data['supervisor'][$key]['nuevos']);
+		var_dump($data['supervisor'][$key]['nuevos']);
 		$this->load->view('list-solicitudes-supervisor', $data);
 	}
 	else
