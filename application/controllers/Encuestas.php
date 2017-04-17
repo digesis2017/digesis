@@ -251,6 +251,7 @@ public function popupJefe() {
 	if ( $_POST ) {
 		$tecnicos = $this->mtecnicos->tecnicos_bySupervisor($_POST['supid']);
 		$fecha = $_POST['fecha'];
+		$sid = array();
 		if ( $_POST['estado'] == 'nuevos' ) {
 			$html = '<table id="tbmonedero" class="detalle-billetera">';
 			$html .= '<thead>
@@ -262,9 +263,11 @@ public function popupJefe() {
 					<tbody>';
 			foreach ( $tecnicos as $key => $value ) {
 				$data = $this->msolicitudes->solicitudes_encuestas($key, 1, false, $fecha);
-				var_dump($data);
 				foreach ( $data as $key => $value ) {
-					$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
+					if ( !isset($sids[$value->id]) ) {
+						$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
+						$sids[$value->id] = TRUE;
+					}
 				}
 			}
 			$html .= '</tbody></table>';
