@@ -178,43 +178,62 @@ window.location.href=url;
 						</tr>
 					</thead>
 					<tbody>
-	<?php 	
-	if (!empty($supervisor)):				
-		///print_r($supervisor);
-	foreach($supervisor as $key=>$value):
-	?>
-	<tr>	
-	<td data-label="Tecnico">
-	<?php echo $value['tecnico']; ?></td>
-	<td data-label="SOT Atendidos">
-	<?php echo count($value['atendidos']) ?></td>
-	<td data-label="SOT pendientes">
-	<?php echo count($value['pendientes']) ?></td>
-
-	<td data-label="SOT reprogramados"><?php echo count($value['reprogramados']) ?></td>
-	<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
-
-	<td data-label="Pend. asignar"><?php echo count($value['nuevos']) ?></td>						
-	<?=var_dump($value['nuevos'])?>
-
-	<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>						
-	</tr>
-
-	<?php 
-		endforeach;
-		endif;
-	?>	
-					</tbody>					  
-				</table>
-
-
-																
+			<?php 	
+			if (!empty($supervisor)):				
+				foreach($supervisor as $key=>$value): ?>
+					<tr>	
+						<td data-label="Tecnico">
+						<?php echo $value['tecnico']; ?></td>
+						<td data-label="SOT Atendidos">
+						<?php echo count($value['atendidos']) ?></td>
+						<td data-label="SOT pendientes">
+						<?php echo count($value['pendientes']) ?></td>
+						<td data-label="SOT reprogramados"><?php echo count($value['reprogramados']) ?></td>
+						<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
+						<td data-label="Pend. asignar"><a href="#" class="mi_popup"><?php echo count($value['nuevos'])?></a></td>
+						<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>
+					</tr>
+			<?php 
+				endforeach;
+			endif;
+			?>	
+		</tbody>
+	</table>
+				
 							</div>
 													
 						</div>
 					</div>
 				</div>
 			</div>
+			<div id="dialog_mi_popup" style="display: none" title="Nueva Ventana"></div>
+			<script>
+				$(document).ready(function()
+				{    
+				   //definiendo las propiedades del popup
+				  $("#dialog_mi_popup").dialog({
+				        autoOpen: false,
+				        height: 550,
+				        width: 650,
+				        modal: true    
+				        });
+				  
+				//mostrando el popup en el evento click del link
+				    $(document).on('click', '.mi_popup', function(ev)
+				    {
+				    	$("#dialog_mi_popup").html('xd');
+				      ev.preventDefault();
+						/*$.post('<?php echo site_url().'controladora/mostrar_ventana/'; ?>',
+				            function(data){
+				 
+				                $("#dialog_mi_popup").html(data);  
+				 
+				                $("#dialog_mi_popup").dialog( "open" );         
+				            });        */
+				         
+				    });
+				}
+			</script>
 		</div>
 		</div>
 	</body>
