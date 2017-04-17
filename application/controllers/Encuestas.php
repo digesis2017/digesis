@@ -195,7 +195,8 @@ public function supervisor($dni=null,$fecha=null) {
 			foreach ( $r_tecnicos as $key => $value ) {
 				$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
 				if ( is_object($datat) ) {
-					$tid = $datat->id;		
+					$tid = $datat->id;
+					$data['supervisor'][$key]['id'] = $datat->id;
 					$data['supervisor'][$key]['tecnico'] = $datat->nombres;
 					$data['supervisor'][$key]['nuevos'] = $this->msolicitudes->solicitudes_encuestas($tid, 1, false,$fecha);
 					$acumulador['nuevos']=intval($acumulador['nuevos'])+count($data['supervisor'][$key]['nuevos']);
