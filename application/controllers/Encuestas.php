@@ -220,7 +220,7 @@ public function supervisor($dni=null,$fecha=null) {
 		redirect('welcome');
 }
 
-public function popup() {
+public function popupSup() {
 	if ( $_POST ) {
 		if ( $_POST['estado'] == 'nuevos' )
 			$data = $this->msolicitudes->solicitudes_encuestas($_POST['tecnicoid'], 1, false, $_POST['fecha']);
@@ -241,6 +241,33 @@ public function popup() {
 			$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
 		}
 		$html .= '</tbody></table>';
+		echo $html;
+	}
+	else
+		redirect('welcome');
+}
+
+public function popupJefe() {
+	if ( $_POST ) {
+		$tecnicos = $this->mtecnicos->tecnicos_bySupervisor($_POST['supid']);
+		$fecha = $_POST['fecha'];
+		if ( $_POST['estado'] == 'nuevos' ) {
+			$html = '<table id="tbmonedero" class="detalle-billetera">';
+			$html .= '<thead>
+							<tr>		
+								<th>ID</th>
+								<th>Fecha Instalación</th>
+							</tr>
+					</thead>
+					<tbody>';
+			foreach ( $tecnicos as $key => $value ) {
+				$data = $this->msolicitudes->solicitudes_encuestas($key, 1, false, $fecha);
+				foreach ( $data as $key => $value ) {
+					$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
+				}
+			}
+			$html .= '</tbody></table>';
+		}
 		echo $html;
 	}
 	else
@@ -276,7 +303,8 @@ foreach ($r_jefes as $key => $value_jefes) {
 
 	foreach ($r_supervisor as $key_sup => $value_sup) {
 		
-	$key_sup=$value_sup->id;	
+	$key_sup=$value_sup->id;
+	$data['jefe']['supervisor'][$key_sup]['id']= $value_sup->id;
 	$data['jefe']['supervisor'][$key_sup]['nom_supervisor']=$value_sup->nombres.' '.$value_sup->apellidos;
 
 

@@ -29,14 +29,14 @@
 		});
 	});
 
-function alertpopup(estado, id) {
-	$.post('popup', { 'estado' : estado, 'tecnicoid' : id, 'fecha' : $("#fecha").val() },
-		function(data){
-			$("#dialog_mi_popup").html(data);
-			$("#dialog_mi_popup").dialog( "open" );
-		}
-	);
-}
+	function alertpopup(estado, id) {
+		$.post('popupSup', { 'estado' : estado, 'tecnicoid' : id, 'fecha' : $("#fecha").val() },
+			function(data){
+				$("#dialog_mi_popup").html(data);
+				$("#dialog_mi_popup").dialog( "open" );
+			}
+		);
+	}
 
 $(function() {
 

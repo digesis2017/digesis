@@ -19,6 +19,23 @@
 
     
 <script type="text/javascript">
+	$(document).ready(function() {    
+		$("#dialog_mi_popup").dialog({
+			autoOpen: false,
+			height: 550,
+			width: 650,
+			modal: true    
+		});
+	});
+
+	function alertpopup(estado, id) {
+		$.post('popupJefe', { 'estado' : estado, 'supid' : id, 'fecha' : $("#fecha").val() },
+			function(data){
+				$("#dialog_mi_popup").html(data);
+				$("#dialog_mi_popup").dialog( "open" );
+			}
+		);
+	}
 
 $(function() {
 
@@ -197,13 +214,17 @@ window.location.href=url;
 	<td data-label="SOT rechazados">
 	<?php echo $sum_sup[$key_sup]['rechazados'] ?></td>	
 
-	<td data-label="Pend. de asignar">
-	<?php echo $sum_sup[$key_sup]['nuevos'] ?></td>	
+	<?php if ( count($sum_sup[$key_sup]['nuevos']) ) { ?>
+	<td data-label="Pend. de asignar"><a href="#" onclick="alertpopup('nuevos', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['nuevos']?></a></td>
+	<?php } else { ?>
+	<td data-label="Pend. de asignar">0</td>
+	<?php } ?>
 
-	<td data-label="Pend. de RF">
-	<?php echo $sum_sup[$key_sup]['sinfotos'] ?></td>	
-
-	</td>
+	<?php if ( count($sum_sup[$key_sup]['nuevos']) ) { ?>
+	<td data-label="Pend. de RF"><a href="#" onclick="alertpopup('sinfotos', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['sinfotos']?></a></td>
+	<?php } else { ?>
+	<td data-label="Pend. de RF">0</td>
+	<?php } ?>
 	</tr>
 
 	<?php 
@@ -245,6 +266,7 @@ window.location.href=url;
 					</div>
 				</div>
 			</div>
+			<div id="dialog_mi_popup" style="display: none" title="Nueva Ventana"></div>
 		</div>
 		</div>
 	</body>
