@@ -224,11 +224,23 @@ public function popup() {
 	if ( $_POST ) {
 		if ( $_POST['estado'] == 'nuevos' )
 			$data = $this->msolicitudes->solicitudes_encuestas($_POST['tecnicoid'], 1, false, $_POST['fecha']);
-		else if ( $_POST['estado' == 'sinfotos'] )
+		else if ( $_POST['estado'] == 'sinfotos'] )
 			$data = $this->msolicitudes->solicitudesrf_encuestas($_POST['tecnicoid']);
+		else
+			$data = array();
 
-		echo var_dump($data);
-
+		$html = '<table id="tbmonedero" class="detalle-billetera">';
+		$html .= '<thead>
+						<tr>		
+							<th>ID</th>
+							<th>Fecha Instalación</th>
+						</tr>
+				</thead>
+				<tbody>';
+		foreach ( $data as $key => $value ) {
+			$html .= '<tr><td>' . $value['id'] . '</td><td>' . date('d-m-Y', $value['fecha_instalacion']) . '</td>';
+		}
+		$html .= '</tbody></table>';
 	}
 	else
 		redirect('welcome');
