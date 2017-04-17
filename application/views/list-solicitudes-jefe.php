@@ -214,13 +214,13 @@ window.location.href=url;
 	<td data-label="SOT rechazados">
 	<?php echo $sum_sup[$key_sup]['rechazados'] ?></td>	
 
-	<?php if ( count($sum_sup[$key_sup]['nuevos']) > 0 ) { ?>
+	<?php if ( $sum_sup[$key_sup]['nuevos'] != 0 ) { ?>
 	<td data-label="Pend. de asignar"><a href="#" onclick="alertpopup('nuevos', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['nuevos']?></a></td>
 	<?php } else { ?>
 	<td data-label="Pend. de asignar">0</td>
 	<?php } ?>
 
-	<?php if ( count($sum_sup[$key_sup]['sinfotos']) > 0 ) { ?>
+	<?php if ( $sum_sup[$key_sup]['sinfotos'] != 0 ) { ?>
 	<td data-label="Pend. de RF"><a href="#" onclick="alertpopup('sinfotos', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['sinfotos']?></a></td>
 	<?php } else { ?>
 	<td data-label="Pend. de RF">0</td>
