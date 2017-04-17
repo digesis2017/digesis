@@ -21,6 +21,34 @@
     
 <script type="text/javascript">
 
+				$(document).ready(function()
+				{    
+				   //definiendo las propiedades del popup
+				  $("#dialog_mi_popup").dialog({
+				        autoOpen: false,
+				        height: 550,
+				        width: 650,
+				        modal: true    
+				        });
+				  
+				//mostrando el popup en el evento click del link
+				    $(document).on('click', '.mi_popup', function(ev)
+				    {
+				    	ev.preventDefault();
+				    	$("#dialog_mi_popup").html('xd');
+				    	$("#dialog_mi_popup").dialog( "open" );
+				      
+						/*$.post('<?php echo site_url().'controladora/mostrar_ventana/'; ?>',
+				            function(data){
+				 
+				                $("#dialog_mi_popup").html(data);  
+				 
+				                $("#dialog_mi_popup").dialog( "open" );         
+				            });        */
+				         
+				    });
+				});
+
 $(function() {
 
 function getParameterByName(name, url) {
@@ -207,33 +235,6 @@ window.location.href=url;
 				</div>
 			</div>
 			<div id="dialog_mi_popup" style="display: none" title="Nueva Ventana"></div>
-			<script>
-				$(document).ready(function()
-				{    
-				   //definiendo las propiedades del popup
-				  $("#dialog_mi_popup").dialog({
-				        autoOpen: false,
-				        height: 550,
-				        width: 650,
-				        modal: true    
-				        });
-				  
-				//mostrando el popup en el evento click del link
-				    $(document).on('click', '.mi_popup', function(ev)
-				    {
-				    	$("#dialog_mi_popup").html('xd');
-				      ev.preventDefault();
-						/*$.post('<?php echo site_url().'controladora/mostrar_ventana/'; ?>',
-				            function(data){
-				 
-				                $("#dialog_mi_popup").html(data);  
-				 
-				                $("#dialog_mi_popup").dialog( "open" );         
-				            });        */
-				         
-				    });
-				});
-			</script>
 		</div>
 		</div>
 	</body>
