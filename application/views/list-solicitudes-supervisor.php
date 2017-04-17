@@ -195,7 +195,7 @@ window.location.href=url;
 	<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
 
 	<td data-label="Pend. asignar"><?php echo count($value['nuevos']) ?></td>						
-	
+	<?=var_dump($value['nuevos'])?>
 
 	<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>						
 	</tr>
