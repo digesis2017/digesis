@@ -232,7 +232,7 @@ window.location.href=url;
 				            });        */
 				         
 				    });
-				}
+				});
 			</script>
 		</div>
 		</div>
