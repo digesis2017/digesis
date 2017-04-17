@@ -238,7 +238,7 @@ public function popup() {
 				</thead>
 				<tbody>';
 		foreach ( $data as $key => $value ) {
-			$html .= '<tr><td>' . $value['id'] . '</td><td>' . date('d-m-Y', $value['fecha_instalacion']) . '</td>';
+			$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
 		}
 		$html .= '</tbody></table>';
 	}
