@@ -203,8 +203,13 @@ window.location.href=url;
 						<?php echo $value['tecnico']; ?></td>
 						<td data-label="SOT Atendidos">
 						<?php echo count($value['atendidos']) ?></td>
-						<td data-label="SOT pendientes">
-						<?php echo count($value['pendientes']) ?></td>
+
+						<?php if ( count($value['pendientes']) ) { ?>
+						<td data-label="SOT pendientes"><a href="#" onclick="alertpopup('pendientes', <?=$value['id']?>);"><?=count($value['pendientes'])?></a></td>
+						<?php } else { ?>
+						<td data-label="SOT pendientes">0</td>
+						<?php } ?>
+
 						<td data-label="SOT reprogramados"><?php echo count($value['reprogramados']) ?></td>
 						<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
 

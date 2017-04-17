@@ -207,8 +207,13 @@ window.location.href=url;
 	</a>
 	<td data-label="SOT Atendidos">
 	<?php echo $sum_sup[$key_sup]['atendidos'] ?></td>
-	<td data-label="SOT pendientes">
-	<?php echo $sum_sup[$key_sup]['pendientes'] ?></td>
+
+	<?php if ( $sum_sup[$key_sup]['pendientes'] != 0 ) { ?>
+	<td data-label="SOT pendientes"><a href="#" onclick="alertpopup('pendientes', <?=$value['id']?>);"><?=$sum_sup[$key_sup]['pendientes']?></a></td>
+	<?php } else { ?>
+	<td data-label="SOT pendientes">0</td>
+	<?php } ?>
+
 	<td data-label="SOT reprogramados">
 	<?php echo $sum_sup[$key_sup]['reprogramados'] ?></td>
 	<td data-label="SOT rechazados">

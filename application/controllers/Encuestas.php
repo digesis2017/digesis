@@ -224,6 +224,8 @@ public function popupSup() {
 	if ( $_POST ) {
 		if ( $_POST['estado'] == 'nuevos' )
 			$data = $this->msolicitudes->solicitudes_encuestas($_POST['tecnicoid'], 1, false, $_POST['fecha']);
+		else if ( $_POST['estado'] == 'pendientes' )
+			$data = $this->msolicitudes->solicitudes_encuestas($_POST['tecnicoid'], 3, false, $_POST['fecha']);
 		else if ( $_POST['estado'] == 'sinfotos' )
 			$data = $this->msolicitudes->solicitudesrf_encuestas($_POST['tecnicoid']);
 		else
@@ -263,6 +265,20 @@ public function popupJefe() {
 		if ( $_POST['estado'] == 'nuevos' ) {
 			foreach ( $tecnicos as $key => $value ) {
 				$data = $this->msolicitudes->solicitudes_encuestas($key, 1, false, $fecha);
+				if ( count($data) ) {
+					foreach ( $data as $key => $value ) {
+						if ( !isset($sids[$value->id]) ) {
+							$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
+							$sids[$value->id] = TRUE;
+						}
+					}
+				}
+			}
+			$html .= '</tbody></table>';
+		}
+		else if ( $_POST['estado'] == 'pendientes' ) {
+			foreach ( $tecnicos as $key => $value ) {
+				$data = $this->msolicitudes->solicitudes_encuestas($key, 3, false, $fecha);
 				if ( count($data) ) {
 					foreach ( $data as $key => $value ) {
 						if ( !isset($sids[$value->id]) ) {
