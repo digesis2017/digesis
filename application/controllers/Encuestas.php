@@ -220,6 +220,19 @@ public function supervisor($dni=null,$fecha=null) {
 		redirect('welcome');
 }
 
+public function popup() {
+	if ( $_POST ) {
+		if ( $_POST['estado'] == 'nuevos' )
+			$data = $this->msolicitudes->solicitudes_encuestas($_POST['tecnicoid'], 1, false, $_POST['fecha']);
+		else if ( $_POST['estado' == 'sinfotos'] )
+			$data = $this->msolicitudes->solicitudesrf_encuestas($_POST['tecnicoid']);
+
+		echo var_dump($data);
+
+	}
+	else
+		redirect('welcome');
+}
 
 public function jefe($dni=null,$fecha=null) {
 

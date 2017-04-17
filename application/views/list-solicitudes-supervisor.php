@@ -30,12 +30,12 @@
 	});
 
 function alertpopup(estado, id) {
-	//$.post('encuestas/mostrar_ventana/',
-	//	function(data){
-			$("#dialog_mi_popup").html(estado + ' ' + id);
+	$.post('encuestas/popup', { 'estado' : estado, 'tecnicoid' : id, 'fecha' : $("#fecha").val() },
+		function(data){
+			$("#dialog_mi_popup").html(data);
 			$("#dialog_mi_popup").dialog( "open" );
-	//	}
-	//);
+		}
+	);
 }
 
 $(function() {
@@ -207,7 +207,13 @@ window.location.href=url;
 						<?php echo count($value['pendientes']) ?></td>
 						<td data-label="SOT reprogramados"><?php echo count($value['reprogramados']) ?></td>
 						<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
-						<td data-label="Pend. asignar"><a href="#" onclick="alertpopup('Nuevos', <?=$value['id']?>);"><?php echo count($value['nuevos'])?></a></td>
+
+						<?php if ( count($value['nuevos']) ) { ?>
+						<td data-label="Pend. asignar"><a href="#" onclick="alertpopup('Nuevos', <?=$value['id']?>);"><?=count($value['nuevos'])?></a></td>
+						<?php } else { ?>
+						<td data-label="Pend. asignar">0</td>
+						<?php } ?>
+
 						<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>
 					</tr>
 			<?php 
