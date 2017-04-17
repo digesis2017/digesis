@@ -251,7 +251,7 @@ public function popupJefe() {
 	if ( $_POST ) {
 		$tecnicos = $this->mtecnicos->tecnicos_bySupervisor($_POST['supid']);
 		$fecha = $_POST['fecha'];
-		$sid = array();
+		$sids = array();
 		if ( $_POST['estado'] == 'nuevos' ) {
 			$html = '<table id="tbmonedero" class="detalle-billetera">';
 			$html .= '<thead>
