@@ -209,12 +209,16 @@ window.location.href=url;
 						<td data-label="SOT rechazados"><?php echo count($value['rechazados']) ?></td>
 
 						<?php if ( count($value['nuevos']) ) { ?>
-						<td data-label="Pend. asignar"><a href="#" onclick="alertpopup('Nuevos', <?=$value['id']?>);"><?=count($value['nuevos'])?></a></td>
+						<td data-label="Pend. asignar"><a href="#" onclick="alertpopup('nuevos', <?=$value['id']?>);"><?=count($value['nuevos'])?></a></td>
 						<?php } else { ?>
 						<td data-label="Pend. asignar">0</td>
 						<?php } ?>
 
-						<td data-label="Pend. RF"><?php echo count($value['sinfotos']) ?></td>
+						<?php if ( count($value['sinfotos']) ) { ?>
+						<td data-label="Pend. RF"><a href="#" onclick="alertpopup('sinfotos', <?=$value['id']?>);"><?=count($value['sinfotos'])?></a></td>
+						<?php } else { ?>
+						<td data-label="Pend. RF">0</td>
+						<?php } ?>
 					</tr>
 			<?php 
 				endforeach;
