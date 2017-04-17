@@ -252,17 +252,29 @@ public function popupJefe() {
 		$tecnicos = $this->mtecnicos->tecnicos_bySupervisor($_POST['supid']);
 		$fecha = $_POST['fecha'];
 		$sids = array();
+		$html = '<table id="tbmonedero" class="detalle-billetera">';
+		$html .= '<thead>
+						<tr>		
+							<th>ID</th>
+							<th>Fecha Instalación</th>
+						</tr>
+				</thead>
+				<tbody>';
 		if ( $_POST['estado'] == 'nuevos' ) {
-			$html = '<table id="tbmonedero" class="detalle-billetera">';
-			$html .= '<thead>
-							<tr>		
-								<th>ID</th>
-								<th>Fecha Instalación</th>
-							</tr>
-					</thead>
-					<tbody>';
 			foreach ( $tecnicos as $key => $value ) {
 				$data = $this->msolicitudes->solicitudes_encuestas($key, 1, false, $fecha);
+				foreach ( $data as $key => $value ) {
+					if ( !isset($sids[$value->id]) ) {
+						$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
+						$sids[$value->id] = TRUE;
+					}
+				}
+			}
+			$html .= '</tbody></table>';
+		}
+		else if ( $_POST['estado'] == 'sinfotos' ) {
+			foreach ( $tecnicos as $key => $value ) {
+				$data = $this->msolicitudes->solicitudesrf_encuestas($key);
 				foreach ( $data as $key => $value ) {
 					if ( !isset($sids[$value->id]) ) {
 						$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
