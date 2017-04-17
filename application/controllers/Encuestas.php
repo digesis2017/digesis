@@ -174,84 +174,51 @@ class Encuestas extends CI_Controller {
 
 public function supervisor($dni=null,$fecha=null) {
 
-	if ( isset($_GET['dni']) && ( !empty($_GET['dni']))){
+	if ( isset($_GET['dni']) && ( !empty($_GET['dni'])) ) {
 		date_default_timezone_set('America/Lima');
 		$this->load->model('mtecnicos');
 		$this->load->model('msupervisores');
-
 		$fecha=$this->input->get('fecha');
 
 		if (empty($fecha))
 			$fecha=date('Y-m-d');
 
-	$r_supervisor=$this->msupervisores->supervisores_ByDni($_GET['dni']);
+		$r_supervisor=$this->msupervisores->supervisores_ByDni($_GET['dni']);
+		$data = array();
+		$acumulador=array('nuevos'=>0,'atendidos'=>0,'pendientes'=>0,'reprogramados'=>0,'rechazados'=>0);
 
-
-
-$data=array();
-$acumulador=array('nuevos'=>0,'atendidos'=>0,'pendientes'=>0,'reprogramados'=>0,'rechazados'=>0);
-
-$data['fecha']=$fecha;
-foreach ($r_supervisor as $key => $value_sup) {
-
-	
-	$data['nom_supervisor']=$value_sup->nombres.' '.$value_sup->apellidos;
-
-	$r_tecnicos=$this->mtecnicos->tecnicos_bySupervisor2($value_sup->id);
-
-	$acumulador['nuevos']=0;		
-	//print_r($r_tecnicos);
-	foreach ($r_tecnicos as $key => $value) {		
-		$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
-
-		if ( is_object($datat) )
-		{
-		$tid = $datat->id;		
-		$data['supervisor'][$key]['tecnico']=$datat->nombres;
-
-		$data['supervisor'][$key]['nuevos']=$this->msolicitudes->solicitudes_encuestas($tid, 1, false,$fecha);
-
-			$acumulador['nuevos']=intval($acumulador['nuevos'])+count($data['supervisor'][$key]['nuevos']);
-
-
-			$data['supervisor'][$key]['atendidos']=$this->msolicitudes->solicitudes_encuestas($tid, 2, false,$fecha);
-
-	$acumulador['atendidos']=intval($acumulador['atendidos']) + count($data['supervisor'][$key]['atendidos']);
-
-	$data['supervisor'][$key]['pendientes']= $this->msolicitudes->solicitudes_encuestas($tid, 3);
-
-	$acumulador['pendientes']=intval($acumulador['pendientes']) +count($data['supervisor'][$key]['pendientes']);
-
-			
-			$data['supervisor'][$key]['reprogramados']= $this->msolicitudes->solicitudes_encuestas($tid, 4, false,$fecha);
-
-			$acumulador['reprogramados']=intval($acumulador['reprogramados']) + count($data['supervisor'][$key]['reprogramados']);
-
-
-
-			$data['supervisor'][$key]['rechazados']=$this->msolicitudes->solicitudes_encuestas($tid, 5, false,$fecha);	
-
-			$acumulador['rechazados']=intval($acumulador['rechazados']) + count($data['supervisor'][$key]['rechazados']);
-
-			$data['supervisor'][$key]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
-
-
-		//print_r($data['supervisor'][$key]['sinfotos']);
-
-
-			$data['supervisor'][$key]['estados']= $this->msolicitudes->estados_entrys();
-
+		$data['fecha']=$fecha;
+		foreach ( $r_supervisor as $key => $value_sup ) {
+			$data['nom_supervisor']=$value_sup->nombres.' '.$value_sup->apellidos;
+			$r_tecnicos=$this->mtecnicos->tecnicos_bySupervisor2($value_sup->id);
+			$acumulador['nuevos']=0;		
+			foreach ( $r_tecnicos as $key => $value ) {
+				$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
+				if ( is_object($datat) ) {
+					$tid = $datat->id;		
+					$data['supervisor'][$key]['tecnico'] = $datat->nombres;
+					$data['supervisor'][$key]['nuevos'] = $this->msolicitudes->solicitudes_encuestas($tid, 1, false,$fecha);
+					$acumulador['nuevos']=intval($acumulador['nuevos'])+count($data['supervisor'][$key]['nuevos']);
+					$data['supervisor'][$key]['atendidos']=$this->msolicitudes->solicitudes_encuestas($tid, 2, false,$fecha);
+					$acumulador['atendidos']=intval($acumulador['atendidos']) + count($data['supervisor'][$key]['atendidos']);
+					$data['supervisor'][$key]['pendientes']= $this->msolicitudes->solicitudes_encuestas($tid, 3);
+					$acumulador['pendientes']=intval($acumulador['pendientes']) +count($data['supervisor'][$key]['pendientes']);
+					$data['supervisor'][$key]['reprogramados']= $this->msolicitudes->solicitudes_encuestas($tid, 4, false,$fecha);
+					$acumulador['reprogramados']=intval($acumulador['reprogramados']) + count($data['supervisor'][$key]['reprogramados']);
+					$data['supervisor'][$key]['rechazados']=$this->msolicitudes->solicitudes_encuestas($tid, 5, false,$fecha);	
+					$acumulador['rechazados']=intval($acumulador['rechazados']) + count($data['supervisor'][$key]['rechazados']);
+					$data['supervisor'][$key]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
+					$data['supervisor'][$key]['estados']= $this->msolicitudes->estados_entrys();
+				}
+			}
 		}
-	}
-}
-				
 		$data['acumulador']=$acumulador;
+		print_r($data['supervisor'][$key]['nuevos']);
 		$this->load->view('list-solicitudes-supervisor', $data);
 	}
-			else
-				redirect('welcome');
-	
-	}	
+	else
+		redirect('welcome');
+}
 
 
 public function jefe($dni=null,$fecha=null) {
