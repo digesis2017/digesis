@@ -241,6 +241,7 @@ public function popup() {
 			$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
 		}
 		$html .= '</tbody></table>';
+		echo $html;
 	}
 	else
 		redirect('welcome');
