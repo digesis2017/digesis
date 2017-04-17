@@ -262,6 +262,7 @@ public function popupJefe() {
 					<tbody>';
 			foreach ( $tecnicos as $key => $value ) {
 				$data = $this->msolicitudes->solicitudes_encuestas($key, 1, false, $fecha);
+				var_dump($data);
 				foreach ( $data as $key => $value ) {
 					$html .= '<tr><td>' . $value->id . '</td><td>' . date('d-m-Y', $value->fecha_instalacion) . '</td>';
 				}
