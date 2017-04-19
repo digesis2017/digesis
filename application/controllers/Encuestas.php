@@ -396,7 +396,7 @@ $data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['atendidos']=$this->m
 			$data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
 
 
-	$sum_sup[$key_sup]['sinfotos']=intval($sum_sup[$key_sup]['sinfotos'])+ count($data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['sinfotos']);
+	$sum_sup[$key_sup]['sinfotos'] += count($data['jefe']['supervisor'][$key_sup]['tec'][$key_tecnico]['sinfotos']);
 
 
 
