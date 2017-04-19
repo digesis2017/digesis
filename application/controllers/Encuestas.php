@@ -197,7 +197,7 @@ public function supervisor($dni=null,$fecha=null) {
 				if ( is_object($datat) ) {
 					$tid = $datat->id;
 					$data['supervisor'][$key]['id'] = $datat->id;
-					$data['supervisor'][$key]['tecnico'] = $datat->nombres;
+					$data['supervisor'][$key]['tecnico'] = $datat->nombres . ' ' . $datat->apellidos;
 					$data['supervisor'][$key]['nuevos'] = $this->msolicitudes->solicitudes_encuestas($tid, 1, false,$fecha);
 					$acumulador['nuevos']=intval($acumulador['nuevos'])+count($data['supervisor'][$key]['nuevos']);
 					$data['supervisor'][$key]['atendidos']=$this->msolicitudes->solicitudes_encuestas($tid, 2, false,$fecha);
