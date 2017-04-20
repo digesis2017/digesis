@@ -99,7 +99,7 @@ class Mtecnicos extends CI_Model
 
 	public function tecnicos_bySupervisor2($supervisorid = 0) {
 		$rows = array();
-			$query = $this->db->query("SELECT id, CONCAT(nombres, ' ', apellidos) AS tnombres,dni,cargo FROM tecnicos WHERE cargo = 1 AND publish = 1 AND supervisorid = $supervisorid");
+			$query = $this->db->query("SELECT id, CONCAT(nombres, ' ', apellidos) AS tnombres,dni,cargo FROM tecnicos WHERE  publish = 1 AND supervisorid = $supervisorid");
 
 		foreach ($query->result() as $key=>$row) {
 			$rows[$row->id] = $row;
