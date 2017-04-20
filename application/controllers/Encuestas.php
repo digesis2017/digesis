@@ -362,25 +362,25 @@ public function jefe($dni=null,$fecha=null) {
 							$sum_sup[$key_sup]['nuevos'] += count($data['jefe']['supervisor'][$key_sup]['nuevos']);
 
 
-							$data['jefe']['supervisor'][$key_sup]['atendidos']=$this->msolicitudes->solicitudes_encuestas($tid, 2, false,$fecha);
+							$data['jefe']['supervisor'][$key_sup]['atendidos']=$this->msolicitudes->solicitudes_encuestas(false, 2, false, $fecha, $key_sup);
 							$acumulador['atendidos']=intval($acumulador['atendidos']) + count($data['jefe']['supervisor'][$key_sup]['atendidos']);
 							$sum_sup[$key_sup]['atendidos']=intval($sum_sup[$key_sup]['atendidos'])+count($data['jefe']['supervisor'][$key_sup]['atendidos']);
 
-							$data['jefe']['supervisor'][$key_sup]['pendientes']= $this->msolicitudes->solicitudes_encuestas($tid, 3);
+							$data['jefe']['supervisor'][$key_sup]['pendientes']= $this->msolicitudes->solicitudes_encuestas(false, 3, false, false, $key_sup);
 							$acumulador['pendientes']=intval($acumulador['pendientes']) +count($data['jefe']['supervisor'][$key_sup]['pendientes']);
 							$sum_sup[$key_sup]['pendientes']=intval($sum_sup[$key_sup]['pendientes']) +count($data['jefe']['supervisor'][$key_sup]['pendientes']);
 
-							$data['jefe']['supervisor'][$key_sup]['reprogramados']= $this->msolicitudes->solicitudes_encuestas($tid, 4, false,$fecha);
+							$data['jefe']['supervisor'][$key_sup]['reprogramados']= $this->msolicitudes->solicitudes_encuestas(false, 4, false, $fecha, $key_sup);
 							$acumulador['reprogramados']=intval($acumulador['reprogramados']) + count($data['jefe']['supervisor'][$key_sup]['reprogramados']);
 							$sum_sup[$key_sup]['reprogramados']=intval($sum_sup[$key_sup]['reprogramados'])+ count($data['jefe']['supervisor'][$key_sup]['reprogramados']);
 
 
 
-							$data['jefe']['supervisor'][$key_sup]['rechazados']=$this->msolicitudes->solicitudes_encuestas($tid, 5, false,$fecha);	
+							$data['jefe']['supervisor'][$key_sup]['rechazados']=$this->msolicitudes->solicitudes_encuestas(false, 5, false, $fecha, $key_sup);
 							$acumulador['rechazados']=intval($acumulador['rechazados']) + count($data['jefe']['supervisor'][$key_sup]['rechazados']);
 							$sum_sup[$key_sup]['rechazados']=intval($sum_sup[$key_sup]['rechazados'])+ count($data['jefe']['supervisor'][$key_sup]['rechazados']);
 
-							$data['jefe']['supervisor'][$key_sup]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas($tid);
+							$data['jefe']['supervisor'][$key_sup]['sinfotos']=$this->msolicitudes->solicitudesrf_encuestas(false, $key_sup);
 							$sum_sup[$key_sup]['sinfotos'] += count($data['jefe']['supervisor'][$key_sup]['sinfotos']);
 
 							$data['jefe']['supervisor'][$key_sup]['estados']= $this->msolicitudes->estados_entrys();

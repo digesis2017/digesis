@@ -286,7 +286,7 @@ class Msolicitudes extends CI_Model
 		}
 	}
 
-	public function solicitudesrf_encuestas($tid = false) {
+	public function solicitudesrf_encuestas($tid = false, $supid = false) {
 		$this->db->select('s.*, ts.nombre AS tsnombre, rf.nombre AS rfnombre');
 		$this->db->from('solicitudes s');
 		$this->db->join('tiposervicios ts', 'ts.id = s.tiposervicioid', 'left');
@@ -296,6 +296,10 @@ class Msolicitudes extends CI_Model
 		$this->db->where_in('s.rf', array(1, 2));
 		if ( is_numeric($tid) && ( $tid != 0 ) ) {
 			$where = "(st.t1id = $tid OR st.t2id = $tid)";
+			$this->db->where($where);
+		}
+		else if ( is_numeric($supid) && ( $supid != 0 ) ) {
+			$where = "st.supid = $supid";
 			$this->db->where($where);
 		}
 		$this->db->order_by("s.fecha_instalacion");
