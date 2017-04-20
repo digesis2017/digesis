@@ -32,7 +32,7 @@ class Msolicitudes extends CI_Model
 		}
 	}
 
-	public function solicitudes_encuestas($tid = false, $estado = false, $today = false, $date=false) {
+	public function solicitudes_encuestas($tid = false, $estado = false, $today = false, $date=false, $supid = false) {
 		$rows = array();
 		$this->db->select('s.*, ts.nombre AS tsnombre, e.nombre AS enombre, m.motivo');
 		$this->db->from('solicitudes s');
@@ -58,6 +58,10 @@ class Msolicitudes extends CI_Model
 			$this->db->where('s.estadoid', $estado);
 		if ( is_numeric($tid) && ( $tid != 0 ) ) {
 			$where = "(st.t1id = $tid OR st.t2id = $tid)";
+			$this->db->where($where);
+		}
+		else if ( is_numeric($supid) && ( $supid != 0 ) ) {
+			$where = "st.supid = $supid";
 			$this->db->where($where);
 		}
 
