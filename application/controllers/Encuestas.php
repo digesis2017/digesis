@@ -354,7 +354,7 @@ public function jefe($dni=null,$fecha=null) {
 						//$datat = $this->mtecnicos->tecnicobyDNI($value->dni);
 
 						//if ( is_object($datat) ) {
-							$tid = $datat->id;
+							//$tid = $datat->id;
 //							$data['jefe']['supervisor'][$key_sup]['tecnico']=$datat->nombres;
 
 							$data['jefe']['supervisor'][$key_sup]['nuevos'] = $this->msolicitudes->solicitudes_encuestas(false, 1, false, $fecha, $key_sup);
