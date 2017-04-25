@@ -75,7 +75,7 @@ $.datepicker.regional['es'] = {
     dateFormat:'yy-mm-dd',
 	onSelect: function () {
 		var dni = getParameterByName('dni');				  
-var url ='index.php/encuestas/jefe?dni='+dni+'&fecha='+$.datepicker.formatDate("yy-mm-dd", $(this).datepicker('getDate'));
+var url ='jefe?dni='+dni+'&fecha='+$.datepicker.formatDate("yy-mm-dd", $(this).datepicker('getDate'));
 
 
 window.location.href=url;
