@@ -27,7 +27,7 @@ class Reportes extends CI_Controller {
 		$data['jefes'] = $this->mjefes->jefes_combo();
 		$params = array('desde' => $data['desde'], 'hasta' => $data['hasta'], 'jefeid' => $data['jefeid']);
 		$data['data'] = $this->mreportes->reportes_getSolicitudes($data['jefes'], $params);
-		$this->load->view('admin/reportes/eficiencia', $data);
+		$this->load->view('admin/reportes/solicitudes', $data);
 	}
 
 	public function eficiencia() {
