@@ -50,7 +50,7 @@
 				<?php foreach ( $data as $jefes ) { ?>
 				<?php foreach ( $jefes as $row ) { ?>
 				<tr id="jefetr">
-					<td><strong><?=$row->fecha_instalacion?></strong></td>
+					<td><strong><?=date('d-m-Y', $row->fecha_instalacion)?></strong></td>
 					<td><strong><?=$row->id?></strong></td>
 					<td><strong><?=$row->tiposervicio?></strong></td>
 					<td><strong><?=$row->tipotrabajo?></strong></td>
