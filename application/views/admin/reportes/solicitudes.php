@@ -48,7 +48,7 @@
 				<?php if ( isset($data) && count($data) ) { ?>
 				<tbody>
 				<?php foreach ( $data as $sid => $row ) { ?>
-				<?=var_dump($row)?>
+				<?=var_dump($row['fecha_instalacion'])?>
 				<tr id="jefetr">
 					<td><strong><?='hola'//$row->fecha_instalacion?></strong></td>
 					<td><strong><?=$sid?></strong></td>
