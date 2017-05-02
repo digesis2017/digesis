@@ -51,7 +51,19 @@
 				<?php foreach ( $jefes as $row ) { ?>
 				<tr id="jefetr">
 					<td><strong><?=$row->fecha_instalacion?></strong></td>
-					<td><strong><?=$sid?></strong></td>
+					<td><strong><?=$row->id?></strong></td>
+					<td><strong><?=$row->tiposervicio?></strong></td>
+					<td><strong><?=$row->tipotrabajo?></strong></td>
+					<td><strong><?=$row->cliente?></strong></td>
+					<td><strong><?=$row->direccion?></strong></td>
+					<td><strong><?=$row->plano?></strong></td>
+					<td><strong><?=$row->nestado?></strong></td>
+					<td><strong><?=$row->anombres?></strong></td>
+					<td><strong><?=$row->rfnombre?></strong></td>
+					<td><strong><?=$row->t1nombres?></strong></td>
+					<td><strong><?=$row->t2nombres?></strong></td>
+					<td><strong><?=$row->supnombres?></strong></td>
+					<td><strong><?=$row->jnombres?></strong></td>
 				</tr>
 				<?php } ?>
 				<?php } ?>
