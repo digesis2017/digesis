@@ -37,10 +37,11 @@
 						<th scope="col"><span>Direccion</span></th>
 						<th scope="col"><span>Plano</span></th>
 						<th scope="col"><span>Estado_SOT</span></th>
-						<th scope="col"><span>Analista SOP</span></th>
+						<th scope="col"><span>Analista_SOP</span></th>
 						<th scope="col"><span>Estado_Foto</span></th>
-						<th scope="col"><span>Técnico 1</span></th>
-						<th scope="col"><span>Técnico 2</span></th>
+						<th scope="col"><span>Analista_RF</span></th>
+						<th scope="col"><span>Tecnico_1</span></th>
+						<th scope="col"><span>Tecnico_2</span></th>
 						<th scope="col"><span>Supervisor</span></th>
 						<th scope="col"><span>Jefatura</span></th>
 					</tr>
@@ -60,6 +61,7 @@
 					<td><?=$row->nestado?></td>
 					<td><?=$row->anombres?></td>
 					<td><?=$row->rfnombre?></td>
+					<td><?=$row->lrfnombres?></td>
 					<td><?=$row->t1nombres?></td>
 					<td><?=$row->t2nombres?></td>
 					<td><?=$row->supnombres?></td>

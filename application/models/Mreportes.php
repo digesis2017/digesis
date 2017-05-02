@@ -331,7 +331,7 @@ class Mreportes extends CI_Model
 	public function jefes_getSolicitudes($supervisores, $params = null) {
 		$rows = array();
 		foreach ( $supervisores as $rkey => $sup ) {
-			$this->db->select('s.fecha_instalacion, s.id, ts.nombre AS "tiposervicio", s.tipotrabajo, s.cliente, s.direccion, s.plano, e.nombre AS "nestado", u.nombres "anombres", rf.nombre AS "rfnombre", t1.nombres AS "t1nombres", t2.nombres AS "t2nombres", sup.nombres AS "supnombres", j.nombres AS "jnombres"');
+			$this->db->select('s.fecha_instalacion, s.id, ts.nombre AS "tiposervicio", s.tipotrabajo, s.cliente, s.direccion, s.plano, e.nombre AS "nestado", u.nombres AS "anombres", rf.nombre AS "rfnombre", u2.nombres AS "lrfnombres", t1.nombres AS "t1nombres", t2.nombres AS "t2nombres", sup.nombres AS "supnombres", j.nombres AS "jnombres"');
 			$this->db->from('solicitudestecnicos st');
 			$this->db->join('solicitudes s', 'st.sid = s.id', 'left');
 			$this->db->join('tiposervicios ts', 'ts.id = s.tiposervicioid', 'left');
@@ -342,6 +342,8 @@ class Mreportes extends CI_Model
 			$this->db->join('supervisores sup', 'sup.id = st.supid', 'left');
 			$this->db->join('jefes j', 'j.id = sup.jefeid', 'left');
 			$this->db->join('usuarios u', 'u.id = st.aid', 'left');
+			$this->db->join('logsolicitudes lrf', 'lrf.sid = s.id', 'left');
+			$this->db->join('usuarios u2', 'u2.id = lrf.usuarioid', 'left');
 			$this->db->where('st.supid', $sup->id);
 			if ( $params['desde'] && $params['hasta'] ) {
 				$this->db->where('s.fecha_instalacion >=', strtotime($params['desde']));
