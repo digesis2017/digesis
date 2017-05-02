@@ -46,10 +46,11 @@
 					</tr>
 				</thead>
 				<?php if ( isset($data) && count($data) ) { ?>
+				<?=var_dump($data)?>
 				<tbody>
 				<?php foreach ( $data as $sid => $row ) { ?>
 				<tr id="jefetr">
-					<td><strong><?=$row['fecha_instalacion']?></strong></td>
+					<td><strong><?=$row->fecha_instalacion?></strong></td>
 					<td><strong><?=$sid?></strong></td>
 				</tr>
 				<?php } ?>
