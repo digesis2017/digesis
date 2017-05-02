@@ -70,9 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<dd><a <?=($active=='jefes')?'class="active"':''?>href="<?=base_url()?>index.php/jefes/form"><i class="fa fa-ticket"></i> Crear Jefe </a></dd>
 					<dd><a <?=($active=='supervisores')?'class="active"':''?>href="<?=base_url()?>index.php/supervisores/form"><i class="fa fa-ticket"></i> Crear Supervisor </a></dd>
 					<dd><a <?=($active=='tecnicos')?'class="active"':''?>href="<?=base_url()?>index.php/tecnicos/form"><i class="fa fa-ticket"></i> Crear Tecnico </a></dd>
-				<dt><a <?=($active=='reportes')?'class="active"':''?>href="#"><i class="fa fa-star"></i> Reportes </a></dt>
-				<dd><a <?=($active=='encuestas')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/encuestas"><i class="fa fa-ticket"></i> Encuestas </a></dd>
-					<dd><a <?=($active=='eficiencia')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/eficiencia"><i class="fa fa-ticket"></i> Eficiencia </a></dd>					
+				<dt><a href="#"><i class="fa fa-star"></i> Reportes </a></dt>
+					<dd><a <?=($active=='solicitudes')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/solicitudes"><i class="fa fa-ticket"></i> Solicitudes </a></dd>
+					<dd><a <?=($active=='encuestas')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/encuestas"><i class="fa fa-ticket"></i> Encuestas </a></dd>
+					<dd><a <?=($active=='eficiencia')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/eficiencia"><i class="fa fa-ticket"></i> Eficiencia </a></dd>
 					<dd><a <?=($active=='rfotografico')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/rfotografico"><i class="fa fa-ticket"></i> Registro F. </a></dd>
 					<dd><a <?=($active=='produccion')?'class="active"':''?>href="<?=base_url()?>index.php/reportes/produccion"><i class="fa fa-ticket"></i> Produccion </a></dd>
 				<?php } else if ( $session->rolid == 2 ) { ?>

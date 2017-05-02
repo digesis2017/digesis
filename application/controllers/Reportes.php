@@ -14,7 +14,20 @@ class Reportes extends CI_Controller {
 	}
 
 	public function index() {
-		redirect('reportes/encuestas');
+		redirect('reportes/solicitudes');
+	}
+
+	public function solicitudes() {
+		$data['header'] = $this->load->view('admin/menu/header', array('active' => 'solicitudes'));
+
+		$data['desde'] = isset($_POST['desde']) ? $_POST['desde'] : date('Y-m-01');
+		$data['hasta'] = isset($_POST['hasta']) ? $_POST['hasta'] : date('Y-m-d');
+		$data['jefeid'] = isset($_POST['jefeid']) ? $_POST['jefeid'] : null;
+
+		$data['jefes'] = $this->mjefes->jefes_combo();
+		$params = array('desde' => $data['desde'], 'hasta' => $data['hasta'], 'jefeid' => $data['jefeid']);
+		$data['data'] = $this->mreportes->reportes_getSolicitudes($data['jefes'], $params);
+		$this->load->view('admin/reportes/eficiencia', $data);
 	}
 
 	public function eficiencia() {
@@ -22,11 +35,6 @@ class Reportes extends CI_Controller {
 
 		$data['desde'] = isset($_POST['desde']) ? $_POST['desde'] : date('Y-m-01');
 		$data['hasta'] = isset($_POST['hasta']) ? $_POST['hasta'] : date('Y-m-d');
-		if ( @$_GET['test'] == TRUE ) {
-			echo '<pre>' . 'Desde: ' . $data['desde'] . '</pre>';
-			echo '<pre>' . 'Hasta: ' . $data['hasta'] . '</pre>';
-			echo date_default_timezone_get();
-		}
 		$data['jefeid'] = isset($_POST['jefeid']) ? $_POST['jefeid'] : null;
 		$data['supervisorid'] = isset($_POST['supervisorid']) ? $_POST['supervisorid'] : null;
 		$data['baseid'] = isset($_POST['baseid']) ? $_POST['baseid'] : null;
@@ -100,9 +108,6 @@ class Reportes extends CI_Controller {
 
 		$params = array('desde' => $data['desde'], 'hasta' => $data['hasta'], 'jefeid' => $data['jefeid'], 'supervisorid' => $data['supervisorid'], 'tecnicoid' => $data['tecnicoid']);
 		$data['data'] = $this->mreportes->jefes_getEncuestas($data['jefes'], $params);
-
-		//var_dump($data['data']);
-
 		$this->load->view('admin/reportes/encuestas',$data);
 	}
 
