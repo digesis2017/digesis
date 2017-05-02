@@ -342,7 +342,7 @@ class Mreportes extends CI_Model
 			$this->db->join('supervisores sup', 'sup.id = st.supid', 'left');
 			$this->db->join('jefes j', 'j.id = sup.jefeid', 'left');
 			$this->db->join('usuarios u', 'u.id = st.aid', 'left');
-			$this->db->join('logsolicitudes lrf', 'lrf.sid = s.id', 'left');
+			$this->db->join('logsolicitudesrf lrf', 'lrf.sid = s.id', 'left');
 			$this->db->join('usuarios u2', 'u2.id = lrf.usuarioid', 'left');
 			$this->db->where('st.supid', $sup->id);
 			if ( $params['desde'] && $params['hasta'] ) {
