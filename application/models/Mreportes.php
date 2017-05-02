@@ -351,11 +351,10 @@ class Mreportes extends CI_Model
 			$query = $this->db->get();
 			if ( $query->num_rows() > 0 ) {
 				foreach ( $query->result() as $key => $row ) {
-					$rows[$row->sid] = $row;
+					$rows[$row->id] = $row;
 				}
 			}
 		}
-		var_dump($rows);
 		return $rows;
 	}
 
