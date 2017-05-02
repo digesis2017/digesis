@@ -336,6 +336,7 @@ class Mreportes extends CI_Model
 			$this->db->join('solicitudes s', 'st.sid = s.id', 'left');
 			$this->db->join('tiposervicios ts', 'ts.id = s.tiposervicioid', 'left');
 			$this->db->join('estados e', 'e.id = s.estadoid', 'left');
+			$this->db->join('estadosrf rf', 'rf.id = s.rf', 'left');
 			$this->db->join('tecnicos t1', 't1.id = st.t1id', 'left');
 			$this->db->join('tecnicos t2', 't2.id = st.t1id', 'left');
 			$this->db->join('supervisores sup', 'sup.id = st.supid', 'left');
