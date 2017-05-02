@@ -3,7 +3,7 @@
 			<script src="<?=base_url()?>js/exportar.js"></script>
 			<div class="list-mod-panel">
 				<h1 style="float: left;"> Reportes / Encuestas / JEFE &nbsp;&nbsp;</h1>
-				<a href="#" id="exportar"><img style="width: 25px;height: 25px;" src="/img/excel.png"></a>	
+				<a href="#" id="exportar"><img style="width: 25px;height: 25px;" src="<?=base_url()?>/img/excel.png"></a>
 			</div>
 			<br><br><br>
 			<table id="tbl_exportar" class="table tableseg table-bordered table-striped">

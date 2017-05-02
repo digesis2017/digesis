@@ -4,7 +4,7 @@
 
 			<div class="list-mod-panel">
 				<h1 style="float: left;"> Reportes / Solicitudes &nbsp;&nbsp;</h1>
-				<a href="#" id="exportar"><img style="width: 25px;height: 25px;" src="<?=base_url()?>/img/excel.png"></a>	
+				<a href="#" id="exportar"><img style="width: 25px;height: 25px;" src="<?=base_url()?>/img/excel.png"></a>
 			</div>
 			<br><br><br><hr>
 			<fieldset class="search">
@@ -26,7 +26,7 @@
 				</form>
 			</fieldset>
 			<br>
-			<table id="tbl_exportar" class="table table-bordered table-striped">
+			<table id="tbl_exportar" style="max-width: 100%" class="table-bordered table-striped">
 				<thead>
 					<tr>
 						<th scope="col"><span>FECHA</span></th>
@@ -50,20 +50,20 @@
 				<?php foreach ( $data as $jefes ) { ?>
 				<?php foreach ( $jefes as $row ) { ?>
 				<tr id="jefetr">
-					<td><strong><?=date('d-m-Y', $row->fecha_instalacion)?></strong></td>
-					<td><strong><?=$row->id?></strong></td>
-					<td><strong><?=$row->tiposervicio?></strong></td>
-					<td><strong><?=$row->tipotrabajo?></strong></td>
-					<td><strong><?=$row->cliente?></strong></td>
-					<td><strong><?=$row->direccion?></strong></td>
-					<td><strong><?=$row->plano?></strong></td>
-					<td><strong><?=$row->nestado?></strong></td>
-					<td><strong><?=$row->anombres?></strong></td>
-					<td><strong><?=$row->rfnombre?></strong></td>
-					<td><strong><?=$row->t1nombres?></strong></td>
-					<td><strong><?=$row->t2nombres?></strong></td>
-					<td><strong><?=$row->supnombres?></strong></td>
-					<td><strong><?=$row->jnombres?></strong></td>
+					<td><?=date('d-m-Y', $row->fecha_instalacion)?></td>
+					<td><?=$row->id?></td>
+					<td><?=$row->tiposervicio?></td>
+					<td><?=$row->tipotrabajo?></td>
+					<td><?=$row->cliente?></td>
+					<td><?=$row->direccion?></td>
+					<td><?=$row->plano?></td>
+					<td><?=$row->nestado?></td>
+					<td><?=$row->anombres?></td>
+					<td><?=$row->rfnombre?></td>
+					<td><?=$row->t1nombres?></td>
+					<td><?=$row->t2nombres?></td>
+					<td><?=$row->supnombres?></td>
+					<td><?=$row->jnombres?></td>
 				</tr>
 				<?php } ?>
 				<?php } ?>
