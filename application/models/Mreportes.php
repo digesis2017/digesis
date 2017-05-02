@@ -226,11 +226,6 @@ class Mreportes extends CI_Model
 			}
 			$this->db->group_by("s.estadoid");
 			$query = $this->db->get();
-			if ( @$_GET['test'] == TRUE ) {
-				echo '<pre>';
-				print_r($query->result());
-				echo '</pre>';
-			}
 			if ( $query->num_rows() > 0 ) {
 				$rows['bases'][$sup->baseid][$sup->id]['sinestado'] = $rows['bases'][$sup->baseid][$sup->id]['validados'] = $rows['bases'][$sup->baseid][$sup->id]['pendientes'] = $rows['bases'][$sup->baseid][$sup->id]['reprogramados'] = $rows['bases'][$sup->baseid][$sup->id]['rechazados'] = $rows['bases'][$sup->baseid][$sup->id]['porcentaje'] = 0;
 				foreach ( $query->result() as $key => $row ) {
@@ -259,18 +254,6 @@ class Mreportes extends CI_Model
 			}
 			if ( $rows['totalsolicitudes'] )
 				$rows['porcentaje'] = number_format(($rows['totalvalidados'] / $rows['totalsolicitudes'] * 100), 0);
-		}
-		if ( @$_GET['test'] == TRUE ) {
-			$this->db->select('s.id, s.estadoid, s.fecha_instalacion');
-			$this->db->from('solicitudes s');
-			$this->db->where('s.estadoid', 4);
-			$query = $this->db->get();
-			echo '<pre>';
-			print_r($query->result());
-			foreach ( $query->result() as $key => $value ) {
-				echo 'Fecha: ' . date('d-m-Y', $value->fecha_instalacion) . ' - Fecha Timestamp: ' . $value->fecha_instalacion;
-			}
-			echo '</pre>';
 		}
 		return $rows;
 	}
@@ -345,6 +328,45 @@ class Mreportes extends CI_Model
 		return $rows;
 	}
 
+	public function jefes_getSolicitudes($supervisores, $params = null) {
+		$rows = array();
+		foreach ( $supervisores as $rkey => $sup ) {
+			$this->db->select('COUNT(st.sid) AS cantidad, s.upload');
+			$this->db->from('solicitudestecnicos st');
+			$this->db->join('solicitudes s', 'st.sid = s.id', 'left');
+			$this->db->where('st.supid', $sup->id);
+			if ( $params['desde'] && $params['hasta'] ) {
+				$this->db->where('s.fecha_instalacion >=', strtotime($params['desde']));
+				$this->db->where('s.fecha_instalacion <=', strtotime($params['hasta']));
+			}
+			$this->db->group_by("s.upload");
+			$query = $this->db->get();
+			if ( $query->num_rows() > 0 ) {
+				foreach ( $query->result() as $key => $row ) {
+
+				}
+			}
+		}
+		return $rows;
+	}
+
+	public function reportes_getSolicitudes($jefes, $params) {
+		$rows = array();
+		if ( is_array($jefes) && count($jefes) ) {
+			if ( $params['jefeid'] )
+				$jefes2[$params['jefeid']] = $jefes[$params['jefeid']];
+			else
+				$jefes2 = $jefes;
+
+			foreach ( $jefes2 as $id => $jefe ) {
+				$array = array('jefeid' => $id, 'publish' => 1);
+				$supervisores = $this->msupervisores->supervisores_byJefe($id, $array);
+				if ( count($supervisores) )
+					$rows[$id] = $this->mreportes->jefes_getSolicitudes($supervisores, $params);
+			}
+		}
+		return $rows;
+	}
 
 	public function jefes_getEficiencia($jefes, $params) {
 		$rows = array();
